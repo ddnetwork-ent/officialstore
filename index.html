@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DD Network Ent. - Bespoke HTML Website Design</title>
+    <title>DD Network Ent.</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
@@ -834,6 +834,57 @@
             } 
         }
         
+        /* Customer Service Button - Top Right */
+        .customer-service-btn {
+            position: fixed;
+            top: 80px;
+            right: 20px;
+            width: 60px;
+            height: 60px;
+            background-color: #25D366;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            z-index: 999;
+            transition: all 0.3s var(--smooth-transition);
+            text-decoration: none;
+        }
+        
+        .customer-service-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+        }
+        
+        .customer-service-btn::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.1);
+            z-index: -1;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+                opacity: 0.7;
+            }
+            70% {
+                transform: scale(1.3);
+                opacity: 0;
+            }
+            100% {
+                transform: scale(1.3);
+                opacity: 0;
+            }
+        }
+        
         /* Responsive Design */
         @media (max-width: 992px) {
             .form-row { 
@@ -871,6 +922,13 @@
             }
             .stats-container {
                 grid-template-columns: repeat(2, 1fr);
+            }
+            .customer-service-btn {
+                top: 70px;
+                right: 15px;
+                width: 50px;
+                height: 50px;
+                font-size: 20px;
             }
         }
         
@@ -959,6 +1017,11 @@
         </div>
     </header>
     
+    <!-- Customer Service WhatsApp Button - Top Right -->
+    <a href="https://wa.me/60122600969" class="customer-service-btn" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+    
     <section class="hero" id="home">
         <div class="hero-bg"></div>
         <div class="hero-content">
@@ -981,10 +1044,16 @@
             
             <div class="form-section" id="contact">
                 <div class="success-message" id="successMessage">
-                    <i class="fas fa-check-circle"></i> Thank you! Your project details have been sent to WhatsApp. We will contact you soon.
+                    <i class="fas fa-check-circle"></i> Thank you! Your project details have been sent. We will contact you soon.
                 </div>
                 
-                <form id="websiteForm">
+                <form id="websiteForm" action="https://formsubmit.co/works@ddnetwork.uk" method="POST">
+                    <!-- FormSubmit.co Configuration -->
+                    <input type="hidden" name="_captcha" value="false">
+                    <input type="hidden" name="_subject" value="New Website Project Inquiry from DD Network Ent.">
+                    <input type="hidden" name="_template" value="table">
+                    <input type="hidden" name="_next" value="https://store.ddnetwork.uk/thankyou.html">
+                    
                     <div class="form-intro">
                         <h3>Project Inquiry Form</h3>
                         <p>Please provide us with details about your website project. The more information you share, the better we can understand your vision.</p>
@@ -993,34 +1062,34 @@
                     <div class="form-row">
                         <div class="form-group">
                             <label for="firstName">First Name <span class="required">*</span></label>
-                            <input type="text" id="firstName" class="form-control" required>
+                            <input type="text" id="firstName" name="firstName" class="form-control" required>
                         </div>
                         <div class="form-group">
                             <label for="lastName">Last Name <span class="required">*</span></label>
-                            <input type="text" id="lastName" class="form-control" required>
+                            <input type="text" id="lastName" name="lastName" class="form-control" required>
                         </div>
                     </div>
                     
                     <div class="form-row">
                         <div class="form-group">
                             <label for="email">Email Address <span class="required">*</span></label>
-                            <input type="email" id="email" class="form-control" required>
+                            <input type="email" id="email" name="email" class="form-control" required>
                         </div>
                         <div class="form-group">
                             <label for="phone">Phone Number</label>
-                            <input type="tel" id="phone" class="form-control" placeholder="+60 12-345 6789">
+                            <input type="tel" id="phone" name="phone" class="form-control" placeholder="+60 12-345 6789">
                         </div>
                     </div>
                     
                     <div class="form-group">
                         <label for="company">Company Name</label>
-                        <input type="text" id="company" class="form-control" placeholder="Your company or brand name">
+                        <input type="text" id="company" name="company" class="form-control" placeholder="Your company or brand name">
                     </div>
                     
                     <div class="form-row">
                         <div class="form-group">
                             <label for="websiteType">Website Type <span class="required">*</span></label>
-                            <select id="websiteType" class="form-control" required>
+                            <select id="websiteType" name="websiteType" class="form-control" required>
                                 <option value="">Select a type</option>
                                 <option value="Portfolio">Portfolio</option>
                                 <option value="E-commerce">E-commerce</option>
@@ -1033,7 +1102,7 @@
                         </div>
                         <div class="form-group">
                             <label for="budget">Estimated Budget <span class="required">*</span></label>
-                            <select id="budget" class="form-control" required>
+                            <select id="budget" name="budget" class="form-control" required>
                                 <option value="">Select a budget range</option>
                                 <option value="RM 100 - RM 500">RM 100 - RM 500</option>
                                 <option value="RM 500 - RM 1,000">RM 500 - RM 1,000</option>
@@ -1047,7 +1116,7 @@
                     
                     <div class="form-group">
                         <label for="description">Describe Your Vision <span class="required">*</span></label>
-                        <textarea id="description" class="form-control" rows="3" placeholder="Describe the look, feel, and functionality you envision..." required></textarea>
+                        <textarea id="description" name="description" class="form-control" rows="3" placeholder="Describe the look, feel, and functionality you envision..." required></textarea>
                     </div>
                     
                     <button type="submit" class="btn-submit" id="submitBtn">
@@ -1064,7 +1133,7 @@
             
             <div class="features">
                 <div class="feature-card">
-                    <div class="feature-icon"><i class="fas fa-code"></i></div>
+                    <div class="feature-icon"><i class="fab fa-html5"></i></div>
                     <h3>Pristine HTML Coding</h3>
                     <p>W3C compliant, semantic HTML5 code that ensures optimal performance, accessibility, and SEO excellence.</p>
                 </div>
@@ -1195,100 +1264,24 @@
             lastScrollTop = scrollTop;
         });
         
-        // Form submission to WhatsApp with smooth animations
+        // Form submission to FormSubmit.co
         document.getElementById('websiteForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
             const submitBtn = document.getElementById('submitBtn');
             const submitText = document.getElementById('submitText');
             const loading = document.getElementById('loading');
             const successMessage = document.getElementById('successMessage');
             
-            // Show loading state with smooth transition
-            submitBtn.style.transform = 'scale(0.95)';
+            // Show loading state
             submitBtn.disabled = true;
-            submitText.style.opacity = '0';
-            setTimeout(() => {
-                submitText.style.display = 'none';
-                loading.style.display = 'inline-block';
-                loading.style.opacity = '0';
-                setTimeout(() => {
-                    loading.style.opacity = '1';
-                }, 100);
-            }, 200);
+            submitText.textContent = 'Processing...';
+            loading.style.display = 'inline-block';
             
-            // Get form values
-            const formData = {
-                firstName: document.getElementById('firstName').value,
-                lastName: document.getElementById('lastName').value,
-                email: document.getElementById('email').value,
-                phone: document.getElementById('phone').value,
-                company: document.getElementById('company').value,
-                websiteType: document.getElementById('websiteType').value,
-                budget: document.getElementById('budget').value,
-                description: document.getElementById('description').value
-            };
-            
-            // Format message for WhatsApp
-            const message = `*New Website Project Inquiry*%0A%0A` +
-                `*Name:* ${formData.firstName} ${formData.lastName}%0A` +
-                `*Email:* ${formData.email}%0A` +
-                `*Phone:* ${formData.phone || 'N/A'}%0A` +
-                `*Company:* ${formData.company || 'N/A'}%0A%0A` +
-                `*Project Details:*%0A` +
-                `• Type: ${formData.websiteType}%0A` +
-                `• Budget: ${formData.budget}%0A%0A` +
-                `*Description:*%0A${formData.description}`;
-            
-            const phoneNumber = "60122600969";
-            const whatsappUrl = `https://wa.me/${phoneNumber}?text=${message}`;
-            
-            // Simulate network delay with smooth transition
-            setTimeout(() => {
-                window.open(whatsappUrl, '_blank');
-                
-                // Reset UI with smooth transition
-                loading.style.opacity = '0';
-                setTimeout(() => {
-                    loading.style.display = 'none';
-                    submitText.style.display = 'inline';
-                    submitText.style.opacity = '0';
-                    submitBtn.style.transform = 'scale(1)';
-                    submitBtn.disabled = false;
-                    setTimeout(() => {
-                        submitText.style.opacity = '1';
-                    }, 100);
-                }, 200);
-                
-                // Show success message with smooth animation
-                successMessage.style.display = 'block';
-                successMessage.style.opacity = '0';
-                successMessage.style.transform = 'translateY(-10px)';
-                setTimeout(() => {
-                    successMessage.style.opacity = '1';
-                    successMessage.style.transform = 'translateY(0)';
-                }, 100);
-                
-                this.reset();
-                
-                // Smooth scroll to top of form
-                window.scrollTo({
-                    top: document.querySelector('.form-section').offsetTop - 80,
-                    behavior: 'smooth'
-                });
-                
-                // Hide success message with smooth animation
-                setTimeout(() => {
-                    successMessage.style.opacity = '0';
-                    successMessage.style.transform = 'translateY(-10px)';
-                    setTimeout(() => {
-                        successMessage.style.display = 'none';
-                    }, 300);
-                }, 5000);
-            }, 1200);
+            // The form will now submit to FormSubmit.co
+            // FormSubmit.co will handle the submission and redirect to the thank you page
+            // We don't need to prevent default or handle the submission manually
         });
         
-        // Smooth scrolling for navigation links with easing
+        // Smooth scrolling for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -1308,7 +1301,7 @@
             });
         });
         
-        // Enhanced Intersection Observer for Animations with staggered effect
+        // Enhanced Intersection Observer for Animations
         const observerOptions = { 
             threshold: 0.1, 
             rootMargin: '0px 0px -30px 0px' 
@@ -1329,7 +1322,7 @@
             observer.observe(el);
         });
         
-        // Enhanced Parallax Effect for Hero Section with smooth performance
+        // Parallax Effect for Hero Section
         let ticking = false;
         function updateParallax() {
             const scrolled = window.pageYOffset;
@@ -1352,13 +1345,13 @@
         
         window.addEventListener('scroll', requestTick);
         
-        // Counter Animation for Stats with smooth easing
+        // Counter Animation for Stats
         const statsObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     const statNumbers = entry.target.querySelectorAll('.stat-number');
                     
-                    // Animate numbers with smooth easing
+                    // Animate numbers
                     statNumbers[0].textContent = '0%';
                     statNumbers[1].textContent = '0+';
                     
@@ -1377,19 +1370,6 @@
             statsObserver.observe(statsSection);
         }
         
-        // Add touch-friendly hover effects for mobile with smooth transitions
-        if ('ontouchstart' in window) {
-            document.querySelectorAll('.feature-card, .btn').forEach(el => {
-                el.addEventListener('touchstart', function() {
-                    this.style.transform = 'scale(0.98)';
-                }, { passive: true });
-                
-                el.addEventListener('touchend', function() {
-                    this.style.transform = 'scale(1)';
-                }, { passive: true });
-            });
-        }
-        
         // Add smooth reveal animation to form inputs
         document.querySelectorAll('.form-control').forEach((input, index) => {
             input.style.opacity = '0';
@@ -1400,17 +1380,6 @@
                 input.style.opacity = '1';
                 input.style.transform = 'translateY(0)';
             }, 50 * index);
-        });
-        
-        // Add smooth focus effect to form inputs
-        document.querySelectorAll('.form-control').forEach(input => {
-            input.addEventListener('focus', function() {
-                this.parentElement.style.transform = 'scale(1.01)';
-            });
-            
-            input.addEventListener('blur', function() {
-                this.parentElement.style.transform = 'scale(1)';
-            });
         });
     </script>
 </body>
