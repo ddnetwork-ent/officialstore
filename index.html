@@ -3,21 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DD Network Ent. - Bespoke HTML Website Design</title>
+    <title>DD Network Ent.- Official Store</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
             --primary-blue: #a8c5d6;
             --soft-blue: #c5dce8;
             --light-blue: #e6f2f8;
-            --dark-blue: #6b8ca5;
+            --dark-blue: #4a6fa5;
             --text-dark: #2c3e50;
             --text-light: #6b8ca5;
             --white: #ffffff;
             --accent: #4a6fa5;
             --gold: #d4af37;
             --gray: #f8f9fa;
+            --section-padding: 60px;
+            --container-padding: 15px;
         }
         
         * {
@@ -53,122 +55,34 @@
             animation: float 20s infinite ease-in-out;
         }
         
-        .circle-1 {
-            width: 400px;
-            height: 400px;
-            background: linear-gradient(45deg, var(--primary-blue), var(--soft-blue));
-            top: -100px;
-            left: -100px;
-            animation-duration: 25s;
-        }
+        .circle-1 { width: 400px; height: 400px; background: linear-gradient(45deg, var(--primary-blue), var(--soft-blue)); top: -10%; left: -10%; animation-duration: 25s; }
+        .circle-2 { width: 300px; height: 300px; background: linear-gradient(45deg, var(--soft-blue), var(--light-blue)); bottom: -10%; right: -10%; animation-duration: 30s; animation-delay: 5s; }
+        .circle-3 { width: 250px; height: 250px; background: linear-gradient(45deg, var(--accent), var(--primary-blue)); top: 40%; left: 50%; transform: translate(-50%, -50%); animation-duration: 35s; animation-delay: 10s; }
         
-        .circle-2 {
-            width: 300px;
-            height: 300px;
-            background: linear-gradient(45deg, var(--soft-blue), var(--light-blue));
-            bottom: -50px;
-            right: -50px;
-            animation-duration: 30s;
-            animation-delay: 5s;
+        @media (max-width: 768px) {
+            .gradient-circle { filter: blur(60px); opacity: 0.25; }
+            .circle-1 { width: 250px; height: 250px; }
+            .circle-2 { width: 200px; height: 200px; }
+            .circle-3 { width: 150px; height: 150px; }
         }
-        
-        .circle-3 {
-            width: 250px;
-            height: 250px;
-            background: linear-gradient(45deg, var(--accent), var(--primary-blue));
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            animation-duration: 35s;
-            animation-delay: 10s;
-        }
-        
-        .floating-shapes {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-        }
-        
-        .shape {
-            position: absolute;
-            opacity: 0.1;
-            animation: float-shape 15s infinite ease-in-out;
-        }
-        
-        .shape-1 {
-            width: 50px;
-            height: 50px;
-            background-color: var(--accent);
-            top: 20%;
-            left: 10%;
-            border-radius: 10px;
-            transform: rotate(45deg);
-            animation-duration: 20s;
-        }
-        
-        .shape-2 {
-            width: 30px;
-            height: 30px;
-            background-color: var(--dark-blue);
-            top: 60%;
-            right: 15%;
-            border-radius: 50%;
-            animation-duration: 25s;
-            animation-delay: 3s;
-        }
-        
-        .shape-3 {
-            width: 40px;
-            height: 40px;
-            background-color: var(--primary-blue);
-            bottom: 30%;
-            left: 20%;
-            clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
-            animation-duration: 30s;
-            animation-delay: 5s;
-        }
-        
+
         @keyframes float {
-            0%, 100% {
-                transform: translate(0, 0) rotate(0deg);
-            }
-            33% {
-                transform: translate(30px, -30px) rotate(120deg);
-            }
-            66% {
-                transform: translate(-20px, 20px) rotate(240deg);
-            }
-        }
-        
-        @keyframes float-shape {
-            0%, 100% {
-                transform: translateY(0) rotate(0deg);
-            }
-            50% {
-                transform: translateY(-20px) rotate(180deg);
-            }
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            33% { transform: translate(30px, -30px) rotate(120deg); }
+            66% { transform: translate(-20px, 20px) rotate(240deg); }
         }
         
         /* Scrollbar Styling */
-        ::-webkit-scrollbar {
-            width: 10px;
-        }
-        
-        ::-webkit-scrollbar-track {
-            background: var(--light-blue);
-        }
-        
-        ::-webkit-scrollbar-thumb {
-            background: var(--dark-blue);
-            border-radius: 5px;
-        }
+        ::-webkit-scrollbar { width: 10px; }
+        ::-webkit-scrollbar-track { background: var(--light-blue); }
+        ::-webkit-scrollbar-thumb { background: var(--dark-blue); border-radius: 5px; }
         
         /* Header Styles */
         header {
             background-color: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
+            backdrop-filter: blur(15px);
             padding: 15px 0;
-            box-shadow: 0 2px 20px rgba(0,0,0,0.05);
+            box-shadow: 0 2px 20px rgba(0,0,0,0.07);
             position: fixed;
             width: 100%;
             top: 0;
@@ -176,29 +90,26 @@
             transition: all 0.3s ease;
         }
         
-        header.scrolled {
-            padding: 10px 0;
-            box-shadow: 0 2px 30px rgba(0,0,0,0.1);
-        }
+        header.scrolled { padding: 10px 0; box-shadow: 0 4px 30px rgba(0,0,0,0.1); }
         
         .header-container {
-            width: 90%;
-            max-width: 1200px;
-            margin: 0 auto;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--container-padding);
         }
         
         .logo-container {
             display: flex;
             align-items: center;
-            gap: 15px;
+            gap: 12px;
         }
         
         .logo-icon {
-            width: 40px;
-            height: 40px;
+            width: 45px;
+            height: 45px;
             background: linear-gradient(135deg, var(--accent) 0%, var(--primary-blue) 100%);
             border-radius: 50%;
             display: flex;
@@ -206,365 +117,231 @@
             justify-content: center;
             color: white;
             font-weight: bold;
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             transition: transform 0.3s ease;
         }
         
-        .logo-container:hover .logo-icon {
-            transform: scale(1.1) rotate(10deg);
-        }
+        .logo-container:hover .logo-icon { transform: scale(1.05) rotate(5deg); }
         
         .logo-text {
             font-family: 'Playfair Display', serif;
-            font-size: 1.5rem;
+            font-size: 1.6rem;
             font-weight: 700;
             color: var(--dark-blue);
             text-decoration: none;
             letter-spacing: 1px;
-            transition: color 0.3s ease;
         }
         
-        .logo-text:hover {
-            color: var(--accent);
+        .tagline { font-size: 0.75rem; color: var(--text-light); font-weight: 400; }
+        
+        /* Hamburger Menu */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            padding: 5px;
         }
         
-        .tagline {
-            font-size: 0.75rem;
-            color: var(--text-light);
-            font-weight: 300;
-            letter-spacing: 0.5px;
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background: var(--dark-blue);
+            margin: 3px 0;
+            transition: 0.3s;
+            border-radius: 3px;
         }
+        
+        .hamburger.active span:nth-child(1) { transform: rotate(-45deg) translate(-5px, 6px); }
+        .hamburger.active span:nth-child(2) { opacity: 0; }
+        .hamburger.active span:nth-child(3) { transform: rotate(45deg) translate(-5px, -6px); }
         
         nav ul {
             display: flex;
             list-style: none;
-            gap: 30px;
+            gap: 35px;
         }
         
         nav ul li a {
             text-decoration: none;
             color: var(--text-dark);
-            font-size: 0.95rem;
             font-weight: 500;
-            transition: all 0.3s ease;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
             position: relative;
-            padding: 5px 0;
         }
         
-        nav ul li a:after {
+        nav ul li a::after {
             content: '';
             position: absolute;
             width: 0;
             height: 2px;
-            bottom: 0;
-            left: 50%;
-            background: linear-gradient(90deg, var(--accent) 0%, var(--primary-blue) 100%);
-            transition: all 0.3s ease;
-        }
-        
-        nav ul li a:hover:after {
-            width: 100%;
+            bottom: -5px;
             left: 0;
+            background: var(--accent);
+            transition: width 0.3s ease;
         }
         
-        nav ul li a:hover {
-            color: var(--accent);
-        }
+        nav ul li a:hover::after { width: 100%; }
+        nav ul li a:hover { color: var(--accent); }
         
         /* Hero Section */
         .hero {
-            height: 90vh;
-            background: linear-gradient(135deg, rgba(168, 197, 214, 0.9) 0%, rgba(197, 220, 232, 0.9) 100%);
+            min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
+            text-align: center;
+            padding: 100px var(--container-padding) var(--section-padding);
             position: relative;
             overflow: hidden;
-            margin-top: 70px;
         }
         
-        .hero::before {
-            content: '';
+        .hero-bg {
             position: absolute;
             top: 0;
             left: 0;
-            right: 0;
-            bottom: 0;
-            background-image: 
-                radial-gradient(circle at 20% 80%, rgba(74, 111, 165, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 80% 20%, rgba(168, 197, 214, 0.1) 0%, transparent 50%);
-            z-index: 1;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(168, 197, 214, 0.8) 0%, rgba(197, 220, 232, 0.8) 100%);
+            z-index: -1;
         }
         
         .hero-content {
-            text-align: center;
-            z-index: 2;
-            padding: 0 20px;
             max-width: 800px;
+            opacity: 0;
+            animation: fadeInUp 1s ease 0.5s forwards;
         }
         
         .hero h1 {
             font-family: 'Playfair Display', serif;
-            font-size: 3.5rem;
+            font-size: clamp(2.5rem, 6vw, 4rem);
             font-weight: 700;
             margin-bottom: 20px;
-            letter-spacing: 2px;
             color: var(--text-dark);
-            animation: fadeInDown 1s ease;
+            line-height: 1.2;
         }
         
         .hero .subtitle {
             font-size: 1.2rem;
             color: var(--text-light);
-            margin-bottom: 15px;
+            margin-bottom: 20px;
             font-weight: 300;
-            animation: fadeInUp 1s ease 0.2s both;
+            letter-spacing: 1px;
         }
         
         .hero p {
             font-size: 1rem;
             color: var(--text-dark);
-            max-width: 600px;
             margin: 0 auto 40px;
-            animation: fadeInUp 1s ease 0.4s both;
-            line-height: 1.8;
+            max-width: 600px;
         }
         
         .hero-buttons {
             display: flex;
             gap: 20px;
             justify-content: center;
-            animation: fadeInUp 1s ease 0.6s both;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 15px 35px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
         }
         
         .btn-primary {
-            display: inline-block;
-            background: linear-gradient(135deg, var(--accent) 0%, var(--dark-blue) 100%);
+            background: var(--dark-blue);
             color: var(--white);
-            padding: 15px 35px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 1rem;
-            transition: all 0.3s ease;
-            box-shadow: 0 10px 30px rgba(74, 111, 165, 0.3);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .btn-primary::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-            transition: left 0.5s;
-        }
-        
-        .btn-primary:hover::before {
-            left: 100%;
-        }
-        
-        .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 40px rgba(74, 111, 165, 0.4);
+            box-shadow: 0 10px 25px rgba(74, 111, 165, 0.3);
         }
         
         .btn-secondary {
-            display: inline-block;
             background-color: transparent;
             color: var(--dark-blue);
-            padding: 15px 35px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 1rem;
-            transition: all 0.3s ease;
-            border: 2px solid var(--dark-blue);
-            position: relative;
-            overflow: hidden;
+            border-color: var(--dark-blue);
         }
         
-        .btn-secondary::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 0;
-            height: 100%;
-            background-color: var(--dark-blue);
-            transition: width 0.3s ease;
-            z-index: -1;
-        }
-        
-        .btn-secondary:hover::before {
-            width: 100%;
-        }
-        
-        .btn-secondary:hover {
-            color: var(--white);
-            transform: translateY(-3px);
-        }
-        
-        /* Pattern overlay */
-        .pattern-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: 
-                linear-gradient(45deg, rgba(255,255,255,0.05) 25%, transparent 25%),
-                linear-gradient(-45deg, rgba(255,255,255,0.05) 25%, transparent 25%),
-                linear-gradient(45deg, transparent 75%, rgba(255,255,255,0.05) 75%),
-                linear-gradient(-45deg, transparent 75%, rgba(255,255,255,0.05) 75%);
-            background-size: 30px 30px;
-            background-position: 0 0, 0 15px, 15px -15px, -15px 0px;
-            opacity: 0.3;
-            z-index: 1;
-            animation: pattern-move 20s linear infinite;
-        }
-        
-        @keyframes pattern-move {
-            0% {
-                background-position: 0 0, 0 15px, 15px -15px, -15px 0px;
-            }
-            100% {
-                background-position: 30px 30px, 30px 45px, 45px 15px, 15px 30px;
-            }
-        }
+        .btn:hover { transform: translateY(-3px); }
+        .btn-primary:hover { box-shadow: 0 15px 35px rgba(74, 111, 165, 0.4); }
+        .btn-secondary:hover { background-color: var(--dark-blue); color: var(--white); }
         
         /* Main Content */
-        main {
-            padding: 60px 0;
-        }
-        
-        .container {
-            width: 90%;
-            max-width: 1100px;
-            margin: 0 auto;
-        }
+        main { padding: var(--section-padding) 0; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 var(--container-padding); }
         
         .section-title {
             text-align: center;
-            margin-bottom: 40px;
+            margin-bottom: 50px;
             opacity: 0;
-            transform: translateY(20px);
-            transition: all 0.8s ease;
+            transform: translateY(30px);
         }
         
         .section-title.visible {
             opacity: 1;
             transform: translateY(0);
+            transition: all 0.7s ease-out;
         }
         
         .section-title h2 {
             font-family: 'Playfair Display', serif;
-            font-size: 2.5rem;
+            font-size: clamp(2rem, 5vw, 2.8rem);
             color: var(--dark-blue);
-            margin-bottom: 20px;
-            position: relative;
-            display: inline-block;
-        }
-        
-        .section-title h2:after {
-            content: '';
-            position: absolute;
-            width: 80px;
-            height: 3px;
-            background: linear-gradient(90deg, var(--accent) 0%, var(--primary-blue) 100%);
-            bottom: -15px;
-            left: 50%;
-            transform: translateX(-50%);
+            margin-bottom: 15px;
         }
         
         .section-title p {
             font-size: 1rem;
             color: var(--text-light);
             max-width: 600px;
-            margin: 30px auto 0;
-            line-height: 1.8;
+            margin: 0 auto;
         }
         
         /* Form Section */
         .form-section {
             background-color: var(--white);
-            padding: 40px 30px;
-            border-radius: 20px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.08);
-            margin-bottom: 60px;
-            position: relative;
-            overflow: hidden;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 15px 50px rgba(0,0,0,0.08);
+            margin-bottom: var(--section-padding);
             opacity: 0;
             transform: translateY(30px);
-            transition: all 0.8s ease;
         }
         
         .form-section.visible {
             opacity: 1;
             transform: translateY(0);
+            transition: all 0.7s ease-out;
         }
         
-        .form-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 5px;
-            background: linear-gradient(90deg, var(--accent) 0%, var(--primary-blue) 100%);
-        }
-        
-        .form-container {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        
-        .form-intro {
-            text-align: center;
-            margin-bottom: 30px;
-        }
-        
+        .form-intro { text-align: center; margin-bottom: 30px; }
         .form-intro h3 {
             font-family: 'Playfair Display', serif;
             font-size: 1.8rem;
             color: var(--dark-blue);
-            margin-bottom: 15px;
+            margin-bottom: 10px;
         }
         
-        .form-intro p {
-            color: var(--text-light);
-            font-size: 1rem;
-        }
-        
-        .form-group {
-            margin-bottom: 25px;
-            opacity: 0;
-            transform: translateX(-20px);
-            transition: all 0.5s ease;
-        }
-        
-        .form-group.visible {
-            opacity: 1;
-            transform: translateX(0);
-        }
-        
+        .form-group { margin-bottom: 25px; }
         .form-group label {
             display: block;
-            margin-bottom: 10px;
+            margin-bottom: 8px;
             font-weight: 600;
             color: var(--dark-blue);
-            font-size: 0.95rem;
-            letter-spacing: 0.5px;
+            font-size: 0.9rem;
         }
         
         .form-control {
             width: 100%;
-            padding: 15px 20px;
+            padding: 15px;
             border: 2px solid #e0e0e0;
-            border-radius: 10px;
+            border-radius: 8px;
             font-family: 'Poppins', sans-serif;
             font-size: 1rem;
             transition: all 0.3s ease;
@@ -578,27 +355,15 @@
             box-shadow: 0 0 0 4px rgba(74, 111, 165, 0.1);
         }
         
-        textarea.form-control {
-            min-height: 120px;
-            resize: vertical;
-        }
-        
-        .form-row {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 25px;
-        }
-        
-        .form-group .required {
-            color: var(--accent);
-        }
+        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 25px; }
+        .required { color: var(--accent); }
         
         .btn-submit {
-            background: linear-gradient(135deg, var(--accent) 0%, var(--dark-blue) 100%);
+            background: var(--dark-blue);
             color: var(--white);
             border: none;
-            padding: 18px 50px;
-            font-size: 1.1rem;
+            padding: 15px 40px;
+            font-size: 1rem;
             font-weight: 600;
             border-radius: 50px;
             cursor: pointer;
@@ -608,53 +373,27 @@
             justify-content: center;
             gap: 10px;
             margin: 30px auto 0;
-            box-shadow: 0 10px 30px rgba(74, 111, 165, 0.3);
-            position: relative;
-            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(74, 111, 165, 0.3);
         }
         
-        .btn-submit::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-            transition: left 0.5s;
-        }
-        
-        .btn-submit:hover::before {
-            left: 100%;
-        }
-        
-        .btn-submit:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 40px rgba(74, 111, 165, 0.4);
-        }
-        
-        .btn-submit:disabled {
-            opacity: 0.7;
-            cursor: not-allowed;
-        }
+        .btn-submit:hover { transform: translateY(-3px); box-shadow: 0 15px 35px rgba(74, 111, 165, 0.4); }
+        .btn-submit:disabled { opacity: 0.7; cursor: not-allowed; }
         
         /* Features Section */
         .features {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 30px;
-            margin-bottom: 60px;
+            margin-bottom: var(--section-padding);
         }
         
         .feature-card {
             background-color: var(--white);
-            padding: 30px 25px;
-            border-radius: 20px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.06);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.06);
             text-align: center;
             transition: all 0.4s ease;
-            position: relative;
-            overflow: hidden;
             opacity: 0;
             transform: translateY(30px);
         }
@@ -662,160 +401,97 @@
         .feature-card.visible {
             opacity: 1;
             transform: translateY(0);
-        }
-        
-        .feature-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: linear-gradient(90deg, var(--accent) 0%, var(--primary-blue) 100%);
-            transform: scaleX(0);
-            transition: transform 0.3s ease;
-        }
-        
-        .feature-card:hover::before {
-            transform: scaleX(1);
+            transition: all 0.7s ease-out;
         }
         
         .feature-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
         }
         
         .feature-icon {
-            width: 70px;
-            height: 70px;
+            width: 80px;
+            height: 80px;
             background: linear-gradient(135deg, var(--soft-blue) 0%, var(--primary-blue) 100%);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             margin: 0 auto 20px;
-            font-size: 1.8rem;
+            font-size: 2rem;
             color: var(--white);
-            transition: all 0.3s ease;
+            transition: transform 0.3s ease;
         }
         
-        .feature-card:hover .feature-icon {
-            transform: scale(1.1);
-            box-shadow: 0 10px 30px rgba(74, 111, 165, 0.3);
-        }
-        
+        .feature-card:hover .feature-icon { transform: scale(1.1); }
         .feature-card h3 {
             font-family: 'Playfair Display', serif;
-            font-size: 1.4rem;
+            font-size: 1.5rem;
             margin-bottom: 15px;
             color: var(--dark-blue);
         }
         
-        .feature-card p {
-            color: var(--text-light);
-            line-height: 1.8;
-            font-size: 0.95rem;
-        }
-        
         /* Stats Section */
         .stats-section {
-            background: linear-gradient(135deg, var(--accent) 0%, var(--dark-blue) 100%);
-            padding: 60px 0;
-            border-radius: 20px;
-            margin-bottom: 60px;
+            background: linear-gradient(135deg, var(--dark-blue) 0%, var(--accent) 100%);
+            padding: var(--section-padding) 20px;
+            border-radius: 15px;
+            margin-bottom: var(--section-padding);
             color: var(--white);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .stats-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: 
-                radial-gradient(circle at 20% 80%, rgba(255,255,255,0.1) 0%, transparent 50%),
-                radial-gradient(circle at 80% 20%, rgba(255,255,255,0.1) 0%, transparent 50%);
-            z-index: 1;
+            text-align: center;
         }
         
         .stats-container {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 30px;
-            text-align: center;
-            position: relative;
-            z-index: 2;
         }
         
-        .stat-item {
-            padding: 15px;
-            opacity: 0;
-            transform: scale(0.8);
-            transition: all 0.5s ease;
-        }
-        
+        .stat-item { opacity: 0; transform: scale(0.8); }
         .stat-item.visible {
             opacity: 1;
             transform: scale(1);
+            transition: all 0.5s ease-out;
         }
         
         .stat-number {
             font-family: 'Playfair Display', serif;
-            font-size: 2.5rem;
+            font-size: 3rem;
             font-weight: 700;
-            margin-bottom: 10px;
             color: var(--gold);
+            margin-bottom: 10px;
         }
         
-        .stat-label {
-            font-size: 1rem;
-            font-weight: 300;
-            letter-spacing: 1px;
-        }
+        .stat-label { font-size: 1.1rem; font-weight: 300; letter-spacing: 1px; }
         
         /* Footer */
         footer {
-            background-color: var(--dark-blue);
+            background-color: var(--text-dark);
             color: var(--white);
             padding: 50px 0 20px;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        footer::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 5px;
-            background: linear-gradient(90deg, var(--gold) 0%, var(--soft-blue) 100%);
         }
         
         .footer-content {
             display: grid;
-            grid-template-columns: 2fr 1fr 1fr 1.5fr;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 40px;
             margin-bottom: 30px;
         }
         
         .footer-section h3 {
             font-family: 'Playfair Display', serif;
-            font-size: 1.4rem;
+            font-size: 1.5rem;
             margin-bottom: 20px;
             position: relative;
-            padding-bottom: 15px;
+            padding-bottom: 10px;
         }
         
-        .footer-section h3:after {
+        .footer-section h3::after {
             content: '';
             position: absolute;
             width: 50px;
             height: 3px;
-            background: linear-gradient(90deg, var(--gold) 0%, var(--soft-blue) 100%);
+            background: var(--gold);
             bottom: 0;
             left: 0;
         }
@@ -824,25 +500,16 @@
             margin-bottom: 10px;
             color: var(--soft-blue);
             line-height: 1.7;
-            font-size: 0.95rem;
         }
         
-        .footer-section ul {
-            list-style: none;
-        }
-        
+        .footer-section ul { list-style: none; }
         .footer-section a {
             color: var(--soft-blue);
             text-decoration: none;
-            transition: all 0.3s ease;
-            display: inline-block;
+            transition: color 0.3s ease;
         }
         
-        .footer-section a:hover {
-            color: var(--gold);
-            transform: translateX(5px);
-        }
-        
+        .footer-section a:hover { color: var(--gold); }
         .social-links {
             display: flex;
             gap: 15px;
@@ -858,12 +525,11 @@
             background-color: rgba(255,255,255,0.1);
             border-radius: 50%;
             transition: all 0.3s ease;
-            font-size: 1.1rem;
         }
         
         .social-links a:hover {
             background-color: var(--gold);
-            color: var(--dark-blue);
+            color: var(--text-dark);
             transform: translateY(-5px);
         }
         
@@ -871,61 +537,23 @@
             text-align: center;
             padding-top: 20px;
             border-top: 1px solid rgba(255,255,255,0.1);
-            font-size: 0.85rem;
+            font-size: 0.9rem;
             color: var(--soft-blue);
         }
         
-        .copyright i {
-            color: var(--gold);
-            margin: 0 5px;
-        }
+        .copyright i { color: var(--gold); margin: 0 5px; }
         
         /* Success Message */
         .success-message {
             display: none;
-            background: linear-gradient(135deg, #d4edda 0%, #c3e6cb 100%);
+            background: #d4edda;
             color: #155724;
-            padding: 20px;
-            border-radius: 10px;
+            padding: 15px;
+            border-radius: 8px;
             margin-bottom: 20px;
             text-align: center;
             font-weight: 500;
-            box-shadow: 0 5px 20px rgba(40, 167, 69, 0.2);
             animation: slideDown 0.5s ease;
-        }
-        
-        /* Animations */
-        @keyframes fadeInDown {
-            from {
-                opacity: 0;
-                transform: translateY(-30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
-        @keyframes slideDown {
-            from {
-                opacity: 0;
-                transform: translateY(-20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
         }
         
         /* Loading Animation */
@@ -933,70 +561,46 @@
             display: none;
             width: 20px;
             height: 20px;
-            border: 3px solid rgba(255,255,255,0.3);
+            border: 2px solid rgba(255,255,255,0.3);
             border-top-color: white;
             border-radius: 50%;
             animation: spin 1s linear infinite;
         }
         
-        @keyframes spin {
-            to { transform: rotate(360deg); }
-        }
+        /* Animations */
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes slideDown { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes spin { to { transform: rotate(360deg); } }
         
-        /* Responsive */
+        /* Responsive Design */
         @media (max-width: 992px) {
-            .footer-content {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            
-            .form-row {
-                grid-template-columns: 1fr;
-            }
+            .form-row { grid-template-columns: 1fr; }
         }
         
         @media (max-width: 768px) {
-            .header-container {
-                flex-direction: column;
-                text-align: center;
-                gap: 15px;
-            }
-            
+            .hamburger { display: flex; }
             nav ul {
-                flex-wrap: wrap;
-                justify-content: center;
-                gap: 20px;
-            }
-            
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-            
-            .hero-buttons {
+                position: fixed;
+                left: -100%;
+                top: 70px;
                 flex-direction: column;
-                align-items: center;
-            }
-            
-            .features {
-                grid-template-columns: 1fr;
-            }
-            
-            .stats-container {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            
-            .footer-content {
-                grid-template-columns: 1fr;
+                background-color: var(--white);
+                width: 100%;
                 text-align: center;
+                transition: 0.3s;
+                box-shadow: 0 10px 27px rgba(0,0,0,0.05);
+                padding: 20px 0;
             }
             
-            .footer-section h3:after {
-                left: 50%;
-                transform: translateX(-50%);
-            }
-            
-            .social-links {
-                justify-content: center;
-            }
+            nav ul.active { left: 0; }
+            .hero { padding: 80px var(--container-padding) var(--section-padding); }
+            .form-section { padding: 30px 20px; }
+        }
+        
+        @media (max-width: 480px) {
+            :root { --section-padding: 40px; }
+            .hero-buttons { flex-direction: column; align-items: center; }
+            .btn { width: 100%; max-width: 300px; }
         }
     </style>
 </head>
@@ -1006,11 +610,6 @@
         <div class="gradient-circle circle-1"></div>
         <div class="gradient-circle circle-2"></div>
         <div class="gradient-circle circle-3"></div>
-        <div class="floating-shapes">
-            <div class="shape shape-1"></div>
-            <div class="shape shape-2"></div>
-            <div class="shape shape-3"></div>
-        </div>
     </div>
     
     <header id="header">
@@ -1019,7 +618,7 @@
                 <div class="logo-icon">DD</div>
                 <div>
                     <a href="#" class="logo-text">DD Network Ent.</a>
-                    <div class="tagline">Elegant HTML Website Design Since 2025</div>
+                    <div class="tagline">Elegant HTML Website Design</div>
                 </div>
             </div>
             <nav>
@@ -1030,18 +629,23 @@
                     <li><a href="#contact">Contact</a></li>
                 </ul>
             </nav>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
         </div>
     </header>
     
     <section class="hero" id="home">
-        <div class="pattern-overlay"></div>
+        <div class="hero-bg"></div>
         <div class="hero-content">
             <h1>Bespoke Digital Excellence</h1>
             <div class="subtitle">Crafted with Precision • Designed for Success</div>
-            <p>Transform your vision into an elegant digital masterpiece. We create sophisticated HTML websites that embody luxury, functionality, and timeless design.</p>
+            <p>We transform your vision into an elegant digital masterpiece, creating sophisticated HTML websites that embody luxury, functionality, and timeless design.</p>
             <div class="hero-buttons">
-                <a href="#contact" class="btn-primary">Begin Your Journey</a>
-                <a href="#services" class="btn-secondary">Explore Services</a>
+                <a href="#contact" class="btn btn-primary">Begin Your Journey</a>
+                <a href="#services" class="btn btn-secondary">Explore Services</a>
             </div>
         </div>
     </section>
@@ -1058,7 +662,7 @@
                     <i class="fas fa-check-circle"></i> Thank you! Your project details have been sent to WhatsApp. We will contact you soon.
                 </div>
                 
-                <form class="form-container" id="websiteForm">
+                <form id="websiteForm">
                     <div class="form-intro">
                         <h3>Project Inquiry Form</h3>
                         <p>Please provide us with details about your website project. The more information you share, the better we can understand your vision.</p>
@@ -1114,25 +718,14 @@
                                 <option value="RM 1,000 - RM 2,500">RM 1,000 - RM 2,500</option>
                                 <option value="RM 2,500 - RM 5,000">RM 2,500 - RM 5,000</option>
                                 <option value="RM 5,000+">RM 5,000+</option>
-                                <option value="Custom Quote">Custom Quote (Based on Requirements)</option>
+                                <option value="Custom Quote">Custom Quote</option>
                             </select>
                         </div>
                     </div>
                     
                     <div class="form-group">
-                        <label for="description">Describe Your Website Vision <span class="required">*</span></label>
-                        <textarea id="description" class="form-control" placeholder="Please describe the look, feel, and functionality you envision for your website. Include any specific colors, layouts, features, or inspiration websites you admire." required></textarea>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="timeline">Desired Timeline <span class="required">*</span></label>
-                        <select id="timeline" class="form-control" required>
-                            <option value="">Select a timeline</option>
-                            <option value="Urgent (2 weeks)">Urgent (2 weeks)</option>
-                            <option value="Standard (1 month)">Standard (1 month)</option>
-                            <option value="Relaxed (2-3 months)">Relaxed (2-3 months)</option>
-                            <option value="Flexible">Flexible</option>
-                        </select>
+                        <label for="description">Describe Your Vision <span class="required">*</span></label>
+                        <textarea id="description" class="form-control" rows="5" placeholder="Describe the look, feel, and functionality you envision..." required></textarea>
                     </div>
                     
                     <button type="submit" class="btn-submit" id="submitBtn">
@@ -1149,51 +742,34 @@
             
             <div class="features">
                 <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-code"></i>
-                    </div>
+                    <div class="feature-icon"><i class="fas fa-code"></i></div>
                     <h3>Pristine HTML Coding</h3>
-                    <p>W3C compliant, semantic HTML5 code that ensures optimal performance, accessibility, and SEO excellence across all platforms.</p>
+                    <p>W3C compliant, semantic HTML5 code that ensures optimal performance, accessibility, and SEO excellence.</p>
                 </div>
-                
                 <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-palette"></i>
-                    </div>
+                    <div class="feature-icon"><i class="fas fa-palette"></i></div>
                     <h3>Luxury Design</h3>
-                    <p>Exclusive, sophisticated designs tailored to your brand identity, creating memorable digital experiences that stand apart.</p>
+                    <p>Exclusive, sophisticated designs tailored to your brand, creating memorable digital experiences.</p>
                 </div>
-                
                 <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-mobile-alt"></i>
-                    </div>
+                    <div class="feature-icon"><i class="fas fa-mobile-alt"></i></div>
                     <h3>Seamless Responsiveness</h3>
-                    <p>Flawless adaptation across all devices, ensuring your website maintains its elegance and functionality on every screen.</p>
+                    <p>Flawless adaptation across all devices, ensuring your website maintains its elegance on every screen.</p>
                 </div>
-                
                 <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-search"></i>
-                    </div>
+                    <div class="feature-icon"><i class="fas fa-search"></i></div>
                     <h3>SEO Excellence</h3>
-                    <p>Built with advanced SEO strategies to enhance visibility and drive organic traffic to your digital presence.</p>
+                    <p>Built with advanced SEO strategies to enhance visibility and drive organic traffic.</p>
                 </div>
-                
                 <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-rocket"></i>
-                    </div>
+                    <div class="feature-icon"><i class="fas fa-rocket"></i></div>
                     <h3>Performance Optimization</h3>
-                    <p>Lightning-fast load times and smooth interactions for an exceptional user experience that keeps visitors engaged.</p>
+                    <p>Lightning-fast load times and smooth interactions for an exceptional user experience.</p>
                 </div>
-                
                 <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-crown"></i>
-                    </div>
+                    <div class="feature-icon"><i class="fas fa-crown"></i></div>
                     <h3>Premium Support</h3>
-                    <p>Dedicated ongoing support and maintenance to ensure your website continues to perform at the highest standard.</p>
+                    <p>Dedicated ongoing support and maintenance to ensure your website performs at the highest standard.</p>
                 </div>
             </div>
             
@@ -1225,17 +801,14 @@
             <div class="footer-content">
                 <div class="footer-section">
                     <h3>DD Network Ent.</h3>
-                    <p>Founded in 2025 by Danial Danish, we specialize in creating exceptional HTML websites that embody luxury, innovation, and digital excellence.</p>
-                    <p>Our mission is to transform your vision into a digital masterpiece that captivates your audience and drives success.</p>
+                    <p>Founded in 2025, we specialize in creating exceptional HTML websites that embody luxury, innovation, and digital excellence.</p>
                     <div class="social-links">
                         <a href="#"><i class="fab fa-facebook-f"></i></a>
                         <a href="#"><i class="fab fa-twitter"></i></a>
                         <a href="#"><i class="fab fa-instagram"></i></a>
                         <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="#"><i class="fab fa-dribbble"></i></a>
                     </div>
                 </div>
-                
                 <div class="footer-section">
                     <h3>Quick Links</h3>
                     <ul>
@@ -1243,10 +816,8 @@
                         <li><a href="#services">Services</a></li>
                         <li><a href="#portfolio">Portfolio</a></li>
                         <li><a href="#contact">Contact</a></li>
-                        <li><a href="#about">About Us</a></li>
                     </ul>
                 </div>
-                
                 <div class="footer-section">
                     <h3>Services</h3>
                     <ul>
@@ -1254,19 +825,15 @@
                         <li><a href="#">Responsive Development</a></li>
                         <li><a href="#">Website Optimization</a></li>
                         <li><a href="#">SEO Implementation</a></li>
-                        <li><a href="#">Premium Support</a></li>
                     </ul>
                 </div>
-                
                 <div class="footer-section">
-                    <h3>Contact Information</h3>
-                    <p><i class="fas fa-envelope"></i> <a href="mailto:works@ddnetwork.uk">works@ddnetwork.uk</a></p>
-                    <p><i class="fas fa-phone"></i> <a href="tel:+60122600969">+60 12-260 0969</a></p>
+                    <h3>Contact</h3>
+                    <p><i class="fas fa-envelope"></i> works@ddnetwork.uk</p>
+                    <p><i class="fas fa-phone"></i> +60 12-260 0969</p>
                     <p><i class="fas fa-map-marker-alt"></i> Kuala Lumpur, Malaysia</p>
-                    <p><i class="fas fa-clock"></i> Mon-Fri: 9:00 AM - 6:00 PM (MYT)</p>
                 </div>
             </div>
-            
             <div class="copyright">
                 <p>&copy; 2025 DD Network Ent. All Rights Reserved. Designed with <i class="fas fa-heart"></i> by Danial Danish</p>
             </div>
@@ -1274,6 +841,23 @@
     </footer>
     
     <script>
+        // Hamburger Menu Toggle
+        const hamburger = document.getElementById('hamburger');
+        const navMenu = document.querySelector('nav ul');
+        
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+
+        // Close menu when a link is clicked
+        document.querySelectorAll('nav ul li a').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navMenu.classList.remove('active');
+            });
+        });
+        
         // Header scroll effect
         window.addEventListener('scroll', function() {
             const header = document.getElementById('header');
@@ -1299,69 +883,63 @@
             loading.style.display = 'inline-block';
             
             // Get form values
-            const firstName = document.getElementById('firstName').value;
-            const lastName = document.getElementById('lastName').value;
-            const email = document.getElementById('email').value;
-            const phone = document.getElementById('phone').value;
-            const company = document.getElementById('company').value;
-            const websiteType = document.getElementById('websiteType').value;
-            const budget = document.getElementById('budget').value;
-            const description = document.getElementById('description').value;
-            const timeline = document.getElementById('timeline').value;
+            const formData = {
+                firstName: document.getElementById('firstName').value,
+                lastName: document.getElementById('lastName').value,
+                email: document.getElementById('email').value,
+                phone: document.getElementById('phone').value,
+                company: document.getElementById('company').value,
+                websiteType: document.getElementById('websiteType').value,
+                budget: document.getElementById('budget').value,
+                description: document.getElementById('description').value,
+                timeline: document.getElementById('timeline').value
+            };
             
             // Format message for WhatsApp
             const message = `*New Website Project Inquiry*%0A%0A` +
-                `*Personal Details:*%0A` +
-                `• Name: ${firstName} ${lastName}%0A` +
-                `• Email: ${email}%0A` +
-                `• Phone: ${phone || 'N/A'}%0A` +
-                `• Company: ${company || 'N/A'}%0A%0A` +
+                `*Name:* ${formData.firstName} ${formData.lastName}%0A` +
+                `*Email:* ${formData.email}%0A` +
+                `*Phone:* ${formData.phone || 'N/A'}%0A` +
+                `*Company:* ${formData.company || 'N/A'}%0A%0A` +
                 `*Project Details:*%0A` +
-                `• Website Type: ${websiteType}%0A` +
-                `• Budget: ${budget}%0A` +
-                `• Timeline: ${timeline}%0A%0A` +
-                `*Description:*%0A${description}`;
+                `• Type: ${formData.websiteType}%0A` +
+                `• Budget: ${formData.budget}%0A` +
+                `• Timeline: ${formData.timeline || 'N/A'}%0A%0A` +
+                `*Description:*%0A${formData.description}`;
             
-            // Your WhatsApp number (include country code without +)
             const phoneNumber = "60122600969";
-            
-            // Create WhatsApp URL
             const whatsappUrl = `https://wa.me/${phoneNumber}?text=${message}`;
             
-            // Simulate network delay for better UX
+            // Simulate network delay
             setTimeout(() => {
-                // Open WhatsApp in a new tab
                 window.open(whatsappUrl, '_blank');
                 
-                // Hide loading state and reset button
+                // Reset UI
                 submitBtn.disabled = false;
                 submitText.style.display = 'inline';
                 loading.style.display = 'none';
                 
                 // Show success message
                 successMessage.style.display = 'block';
-                
-                // Reset form
                 this.reset();
                 
-                // Scroll to top of form to see success message
+                // Scroll to top of form
                 window.scrollTo({
                     top: document.querySelector('.form-section').offsetTop - 100,
                     behavior: 'smooth'
                 });
                 
-                // Hide success message after 7 seconds
+                // Hide success message
                 setTimeout(() => {
                     successMessage.style.display = 'none';
                 }, 7000);
-            }, 1000); // 1 second delay
+            }, 1000);
         });
         
         // Smooth scrolling for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
-                
                 const targetId = this.getAttribute('href');
                 if (targetId === '#') return;
                 
@@ -1376,69 +954,28 @@
             });
         });
         
-        // Add animation to elements when they come into view
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-        
+        // Intersection Observer for Animations
+        const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -50px 0px' };
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('visible');
-                    
-                    // If it's a feature card, add staggered animation
-                    if (entry.target.classList.contains('feature-card')) {
-                        const cards = document.querySelectorAll('.feature-card');
-                        cards.forEach((card, index) => {
-                            setTimeout(() => {
-                                card.style.transitionDelay = `${index * 0.1}s`;
-                                card.classList.add('visible');
-                            }, 100);
-                        });
-                    }
-                    
-                    // If it's a form group, add staggered animation
-                    if (entry.target.classList.contains('form-group')) {
-                        const formGroups = document.querySelectorAll('.form-group');
-                        formGroups.forEach((group, index) => {
-                            setTimeout(() => {
-                                group.style.transitionDelay = `${index * 0.1}s`;
-                                group.classList.add('visible');
-                            }, 100);
-                        });
-                    }
                 }
             });
         }, observerOptions);
         
-        // Observe all elements with animation
-        document.querySelectorAll('.section-title, .form-section, .feature-card, .stat-item, .form-group').forEach(element => {
-            observer.observe(element);
+        // Observe elements
+        document.querySelectorAll('.section-title, .form-section, .feature-card, .stat-item').forEach(el => {
+            observer.observe(el);
         });
         
-        // Counter animation for stats
-        function animateCounter(element, target, suffix = '') {
-            let current = 0;
-            const increment = target / 50;
-            const timer = setInterval(() => {
-                current += increment;
-                if (current >= target) {
-                    current = target;
-                    clearInterval(timer);
-                }
-                element.textContent = Math.floor(current) + suffix;
-            }, 30);
-        }
-        
-        // Trigger counter animation when stats section is visible
+        // Counter Animation for Stats
         const statsObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     const statNumbers = entry.target.querySelectorAll('.stat-number');
-                    if(statNumbers[0]) animateCounter(statNumbers[0], 100, '%');
-                    if(statNumbers[1]) animateCounter(statNumbers[1], 50, '+');
-                    // The other stats are not numbers, so we skip them
+                    statNumbers[0].textContent = '100%';
+                    statNumbers[1].textContent = '50+';
                     statsObserver.unobserve(entry.target);
                 }
             });
