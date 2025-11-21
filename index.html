@@ -34,6 +34,121 @@
             overflow-x: hidden;
         }
         
+        /* Animated Background */
+        .animated-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+        
+        .gradient-circle {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.4;
+            animation: float 20s infinite ease-in-out;
+        }
+        
+        .circle-1 {
+            width: 400px;
+            height: 400px;
+            background: linear-gradient(45deg, var(--primary-blue), var(--soft-blue));
+            top: -100px;
+            left: -100px;
+            animation-duration: 25s;
+        }
+        
+        .circle-2 {
+            width: 300px;
+            height: 300px;
+            background: linear-gradient(45deg, var(--soft-blue), var(--light-blue));
+            bottom: -50px;
+            right: -50px;
+            animation-duration: 30s;
+            animation-delay: 5s;
+        }
+        
+        .circle-3 {
+            width: 250px;
+            height: 250px;
+            background: linear-gradient(45deg, var(--accent), var(--primary-blue));
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            animation-duration: 35s;
+            animation-delay: 10s;
+        }
+        
+        .floating-shapes {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+        
+        .shape {
+            position: absolute;
+            opacity: 0.1;
+            animation: float-shape 15s infinite ease-in-out;
+        }
+        
+        .shape-1 {
+            width: 50px;
+            height: 50px;
+            background-color: var(--accent);
+            top: 20%;
+            left: 10%;
+            border-radius: 10px;
+            transform: rotate(45deg);
+            animation-duration: 20s;
+        }
+        
+        .shape-2 {
+            width: 30px;
+            height: 30px;
+            background-color: var(--dark-blue);
+            top: 60%;
+            right: 15%;
+            border-radius: 50%;
+            animation-duration: 25s;
+            animation-delay: 3s;
+        }
+        
+        .shape-3 {
+            width: 40px;
+            height: 40px;
+            background-color: var(--primary-blue);
+            bottom: 30%;
+            left: 20%;
+            clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+            animation-duration: 30s;
+            animation-delay: 5s;
+        }
+        
+        @keyframes float {
+            0%, 100% {
+                transform: translate(0, 0) rotate(0deg);
+            }
+            33% {
+                transform: translate(30px, -30px) rotate(120deg);
+            }
+            66% {
+                transform: translate(-20px, 20px) rotate(240deg);
+            }
+        }
+        
+        @keyframes float-shape {
+            0%, 100% {
+                transform: translateY(0) rotate(0deg);
+            }
+            50% {
+                transform: translateY(-20px) rotate(180deg);
+            }
+        }
+        
         /* Scrollbar Styling */
         ::-webkit-scrollbar {
             width: 10px;
@@ -68,7 +183,7 @@
         
         .header-container {
             width: 90%;
-            max-width: 1400px;
+            max-width: 1200px;
             margin: 0 auto;
             display: flex;
             justify-content: space-between;
@@ -92,6 +207,11 @@
             color: white;
             font-weight: bold;
             font-size: 1.2rem;
+            transition: transform 0.3s ease;
+        }
+        
+        .logo-container:hover .logo-icon {
+            transform: scale(1.1) rotate(10deg);
         }
         
         .logo-text {
@@ -118,7 +238,7 @@
         nav ul {
             display: flex;
             list-style: none;
-            gap: 40px;
+            gap: 30px;
         }
         
         nav ul li a {
@@ -153,7 +273,7 @@
         
         /* Hero Section */
         .hero {
-            height: 100vh;
+            height: 90vh;
             background: linear-gradient(135deg, rgba(168, 197, 214, 0.9) 0%, rgba(197, 220, 232, 0.9) 100%);
             display: flex;
             align-items: center;
@@ -180,12 +300,12 @@
             text-align: center;
             z-index: 2;
             padding: 0 20px;
-            max-width: 900px;
+            max-width: 800px;
         }
         
         .hero h1 {
             font-family: 'Playfair Display', serif;
-            font-size: 4rem;
+            font-size: 3.5rem;
             font-weight: 700;
             margin-bottom: 20px;
             letter-spacing: 2px;
@@ -194,7 +314,7 @@
         }
         
         .hero .subtitle {
-            font-size: 1.3rem;
+            font-size: 1.2rem;
             color: var(--text-light);
             margin-bottom: 15px;
             font-weight: 300;
@@ -202,7 +322,7 @@
         }
         
         .hero p {
-            font-size: 1.1rem;
+            font-size: 1rem;
             color: var(--text-dark);
             max-width: 600px;
             margin: 0 auto 40px;
@@ -228,6 +348,23 @@
             font-size: 1rem;
             transition: all 0.3s ease;
             box-shadow: 0 10px 30px rgba(74, 111, 165, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s;
+        }
+        
+        .btn-primary:hover::before {
+            left: 100%;
         }
         
         .btn-primary:hover {
@@ -246,10 +383,27 @@
             font-size: 1rem;
             transition: all 0.3s ease;
             border: 2px solid var(--dark-blue);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn-secondary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 100%;
+            background-color: var(--dark-blue);
+            transition: width 0.3s ease;
+            z-index: -1;
+        }
+        
+        .btn-secondary:hover::before {
+            width: 100%;
         }
         
         .btn-secondary:hover {
-            background-color: var(--dark-blue);
             color: var(--white);
             transform: translateY(-3px);
         }
@@ -270,27 +424,45 @@
             background-position: 0 0, 0 15px, 15px -15px, -15px 0px;
             opacity: 0.3;
             z-index: 1;
+            animation: pattern-move 20s linear infinite;
+        }
+        
+        @keyframes pattern-move {
+            0% {
+                background-position: 0 0, 0 15px, 15px -15px, -15px 0px;
+            }
+            100% {
+                background-position: 30px 30px, 30px 45px, 45px 15px, 15px 30px;
+            }
         }
         
         /* Main Content */
         main {
-            padding: 100px 0;
+            padding: 60px 0;
         }
         
         .container {
             width: 90%;
-            max-width: 1200px;
+            max-width: 1100px;
             margin: 0 auto;
         }
         
         .section-title {
             text-align: center;
-            margin-bottom: 70px;
+            margin-bottom: 40px;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.8s ease;
+        }
+        
+        .section-title.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
         
         .section-title h2 {
             font-family: 'Playfair Display', serif;
-            font-size: 3rem;
+            font-size: 2.5rem;
             color: var(--dark-blue);
             margin-bottom: 20px;
             position: relative;
@@ -309,7 +481,7 @@
         }
         
         .section-title p {
-            font-size: 1.1rem;
+            font-size: 1rem;
             color: var(--text-light);
             max-width: 600px;
             margin: 30px auto 0;
@@ -319,12 +491,20 @@
         /* Form Section */
         .form-section {
             background-color: var(--white);
-            padding: 70px 50px;
+            padding: 40px 30px;
             border-radius: 20px;
             box-shadow: 0 20px 60px rgba(0,0,0,0.08);
-            margin-bottom: 100px;
+            margin-bottom: 60px;
             position: relative;
             overflow: hidden;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+        
+        .form-section.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
         
         .form-section::before {
@@ -338,18 +518,18 @@
         }
         
         .form-container {
-            max-width: 900px;
+            max-width: 800px;
             margin: 0 auto;
         }
         
         .form-intro {
             text-align: center;
-            margin-bottom: 40px;
+            margin-bottom: 30px;
         }
         
         .form-intro h3 {
             font-family: 'Playfair Display', serif;
-            font-size: 2rem;
+            font-size: 1.8rem;
             color: var(--dark-blue);
             margin-bottom: 15px;
         }
@@ -360,7 +540,15 @@
         }
         
         .form-group {
-            margin-bottom: 30px;
+            margin-bottom: 25px;
+            opacity: 0;
+            transform: translateX(-20px);
+            transition: all 0.5s ease;
+        }
+        
+        .form-group.visible {
+            opacity: 1;
+            transform: translateX(0);
         }
         
         .form-group label {
@@ -391,14 +579,14 @@
         }
         
         textarea.form-control {
-            min-height: 150px;
+            min-height: 120px;
             resize: vertical;
         }
         
         .form-row {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 30px;
+            gap: 25px;
         }
         
         .form-group .required {
@@ -415,9 +603,29 @@
             border-radius: 50px;
             cursor: pointer;
             transition: all 0.3s ease;
-            display: block;
-            margin: 40px auto 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin: 30px auto 0;
             box-shadow: 0 10px 30px rgba(74, 111, 165, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn-submit::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s;
+        }
+        
+        .btn-submit:hover::before {
+            left: 100%;
         }
         
         .btn-submit:hover {
@@ -425,23 +633,35 @@
             box-shadow: 0 15px 40px rgba(74, 111, 165, 0.4);
         }
         
+        .btn-submit:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+        }
+        
         /* Features Section */
         .features {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 40px;
-            margin-bottom: 100px;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
         }
         
         .feature-card {
             background-color: var(--white);
-            padding: 40px 30px;
+            padding: 30px 25px;
             border-radius: 20px;
             box-shadow: 0 10px 40px rgba(0,0,0,0.06);
             text-align: center;
             transition: all 0.4s ease;
             position: relative;
             overflow: hidden;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        
+        .feature-card.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
         
         .feature-card::before {
@@ -466,15 +686,15 @@
         }
         
         .feature-icon {
-            width: 80px;
-            height: 80px;
+            width: 70px;
+            height: 70px;
             background: linear-gradient(135deg, var(--soft-blue) 0%, var(--primary-blue) 100%);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 0 auto 25px;
-            font-size: 2rem;
+            margin: 0 auto 20px;
+            font-size: 1.8rem;
             color: var(--white);
             transition: all 0.3s ease;
         }
@@ -486,7 +706,7 @@
         
         .feature-card h3 {
             font-family: 'Playfair Display', serif;
-            font-size: 1.5rem;
+            font-size: 1.4rem;
             margin-bottom: 15px;
             color: var(--dark-blue);
         }
@@ -494,38 +714,64 @@
         .feature-card p {
             color: var(--text-light);
             line-height: 1.8;
+            font-size: 0.95rem;
         }
         
         /* Stats Section */
         .stats-section {
             background: linear-gradient(135deg, var(--accent) 0%, var(--dark-blue) 100%);
-            padding: 80px 0;
+            padding: 60px 0;
             border-radius: 20px;
-            margin-bottom: 100px;
+            margin-bottom: 60px;
             color: var(--white);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .stats-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(circle at 20% 80%, rgba(255,255,255,0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(255,255,255,0.1) 0%, transparent 50%);
+            z-index: 1;
         }
         
         .stats-container {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 40px;
+            gap: 30px;
             text-align: center;
+            position: relative;
+            z-index: 2;
         }
         
         .stat-item {
-            padding: 20px;
+            padding: 15px;
+            opacity: 0;
+            transform: scale(0.8);
+            transition: all 0.5s ease;
+        }
+        
+        .stat-item.visible {
+            opacity: 1;
+            transform: scale(1);
         }
         
         .stat-number {
             font-family: 'Playfair Display', serif;
-            font-size: 3rem;
+            font-size: 2.5rem;
             font-weight: 700;
             margin-bottom: 10px;
             color: var(--gold);
         }
         
         .stat-label {
-            font-size: 1.1rem;
+            font-size: 1rem;
             font-weight: 300;
             letter-spacing: 1px;
         }
@@ -534,20 +780,32 @@
         footer {
             background-color: var(--dark-blue);
             color: var(--white);
-            padding: 70px 0 30px;
+            padding: 50px 0 20px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--gold) 0%, var(--soft-blue) 100%);
         }
         
         .footer-content {
             display: grid;
             grid-template-columns: 2fr 1fr 1fr 1.5fr;
-            gap: 50px;
-            margin-bottom: 40px;
+            gap: 40px;
+            margin-bottom: 30px;
         }
         
         .footer-section h3 {
             font-family: 'Playfair Display', serif;
-            font-size: 1.5rem;
-            margin-bottom: 25px;
+            font-size: 1.4rem;
+            margin-bottom: 20px;
             position: relative;
             padding-bottom: 15px;
         }
@@ -563,9 +821,10 @@
         }
         
         .footer-section p, .footer-section li {
-            margin-bottom: 12px;
+            margin-bottom: 10px;
             color: var(--soft-blue);
-            line-height: 1.8;
+            line-height: 1.7;
+            font-size: 0.95rem;
         }
         
         .footer-section ul {
@@ -587,19 +846,19 @@
         .social-links {
             display: flex;
             gap: 15px;
-            margin-top: 25px;
+            margin-top: 20px;
         }
         
         .social-links a {
             display: flex;
             align-items: center;
             justify-content: center;
-            width: 45px;
-            height: 45px;
+            width: 40px;
+            height: 40px;
             background-color: rgba(255,255,255,0.1);
             border-radius: 50%;
             transition: all 0.3s ease;
-            font-size: 1.2rem;
+            font-size: 1.1rem;
         }
         
         .social-links a:hover {
@@ -610,9 +869,9 @@
         
         .copyright {
             text-align: center;
-            padding-top: 30px;
+            padding-top: 20px;
             border-top: 1px solid rgba(255,255,255,0.1);
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             color: var(--soft-blue);
         }
         
@@ -628,7 +887,7 @@
             color: #155724;
             padding: 20px;
             border-radius: 10px;
-            margin-bottom: 30px;
+            margin-bottom: 20px;
             text-align: center;
             font-weight: 500;
             box-shadow: 0 5px 20px rgba(40, 167, 69, 0.2);
@@ -678,7 +937,6 @@
             border-top-color: white;
             border-radius: 50%;
             animation: spin 1s linear infinite;
-            margin: 0 auto;
         }
         
         @keyframes spin {
@@ -743,6 +1001,18 @@
     </style>
 </head>
 <body>
+    <!-- Animated Background -->
+    <div class="animated-bg">
+        <div class="gradient-circle circle-1"></div>
+        <div class="gradient-circle circle-2"></div>
+        <div class="gradient-circle circle-3"></div>
+        <div class="floating-shapes">
+            <div class="shape shape-1"></div>
+            <div class="shape shape-2"></div>
+            <div class="shape shape-3"></div>
+        </div>
+    </div>
+    
     <header id="header">
         <div class="header-container">
             <div class="logo-container">
@@ -785,7 +1055,7 @@
             
             <div class="form-section" id="contact">
                 <div class="success-message" id="successMessage">
-                    <i class="fas fa-check-circle"></i> Thank you for your inquiry! We'll contact you within 24 hours to discuss your project.
+                    <i class="fas fa-check-circle"></i> Thank you! Your project details have been sent to WhatsApp. We will contact you soon.
                 </div>
                 
                 <form class="form-container" id="websiteForm">
@@ -826,25 +1096,25 @@
                             <label for="websiteType">Website Type <span class="required">*</span></label>
                             <select id="websiteType" class="form-control" required>
                                 <option value="">Select a type</option>
-                                <option value="portfolio">Portfolio</option>
-                                <option value="ecommerce">E-commerce</option>
-                                <option value="corporate">Corporate</option>
-                                <option value="blog">Blog/Magazine</option>
-                                <option value="landing">Landing Page</option>
-                                <option value="creative">Creative/Agency</option>
-                                <option value="other">Other</option>
+                                <option value="Portfolio">Portfolio</option>
+                                <option value="E-commerce">E-commerce</option>
+                                <option value="Corporate">Corporate</option>
+                                <option value="Blog/Magazine">Blog/Magazine</option>
+                                <option value="Landing Page">Landing Page</option>
+                                <option value="Creative/Agency">Creative/Agency</option>
+                                <option value="Other">Other</option>
                             </select>
                         </div>
                         <div class="form-group">
                             <label for="budget">Estimated Budget <span class="required">*</span></label>
                             <select id="budget" class="form-control" required>
                                 <option value="">Select a budget range</option>
-                                <option value="100-500">RM 100 - RM 500</option>
-                                <option value="500-1000">RM 500 - RM 1,000</option>
-                                <option value="1000-2500">RM 1,000 - RM 2,500</option>
-                                <option value="2500-5000">RM 2,500 - RM 5,000</option>
-                                <option value="5000+">RM 5,000+</option>
-                                <option value="custom">Custom Quote (Based on Requirements)</option>
+                                <option value="RM 100 - RM 500">RM 100 - RM 500</option>
+                                <option value="RM 500 - RM 1,000">RM 500 - RM 1,000</option>
+                                <option value="RM 1,000 - RM 2,500">RM 1,000 - RM 2,500</option>
+                                <option value="RM 2,500 - RM 5,000">RM 2,500 - RM 5,000</option>
+                                <option value="RM 5,000+">RM 5,000+</option>
+                                <option value="Custom Quote">Custom Quote (Based on Requirements)</option>
                             </select>
                         </div>
                     </div>
@@ -858,14 +1128,14 @@
                         <label for="timeline">Desired Timeline <span class="required">*</span></label>
                         <select id="timeline" class="form-control" required>
                             <option value="">Select a timeline</option>
-                            <option value="urgent">Urgent (2 weeks)</option>
-                            <option value="standard">Standard (1 month)</option>
-                            <option value="relaxed">Relaxed (2-3 months)</option>
-                            <option value="flexible">Flexible</option>
+                            <option value="Urgent (2 weeks)">Urgent (2 weeks)</option>
+                            <option value="Standard (1 month)">Standard (1 month)</option>
+                            <option value="Relaxed (2-3 months)">Relaxed (2-3 months)</option>
+                            <option value="Flexible">Flexible</option>
                         </select>
                     </div>
                     
-                    <button type="submit" class="btn-submit">
+                    <button type="submit" class="btn-submit" id="submitBtn">
                         <span id="submitText">Submit Project Request</span>
                         <div class="loading" id="loading"></div>
                     </button>
@@ -991,7 +1261,7 @@
                 <div class="footer-section">
                     <h3>Contact Information</h3>
                     <p><i class="fas fa-envelope"></i> <a href="mailto:works@ddnetwork.uk">works@ddnetwork.uk</a></p>
-                    <p><i class="fas fa-phone"></i> <a href="tel:+60123456789">+60 12-345 6789</a></p>
+                    <p><i class="fas fa-phone"></i> <a href="tel:+60122600969">+60 12-260 0969</a></p>
                     <p><i class="fas fa-map-marker-alt"></i> Kuala Lumpur, Malaysia</p>
                     <p><i class="fas fa-clock"></i> Mon-Fri: 9:00 AM - 6:00 PM (MYT)</p>
                 </div>
@@ -1014,59 +1284,77 @@
             }
         });
         
-        // Form submission
+        // Form submission to WhatsApp
         document.getElementById('websiteForm').addEventListener('submit', function(e) {
             e.preventDefault();
             
-            const submitBtn = document.querySelector('.btn-submit');
+            const submitBtn = document.getElementById('submitBtn');
             const submitText = document.getElementById('submitText');
             const loading = document.getElementById('loading');
+            const successMessage = document.getElementById('successMessage');
             
             // Show loading state
-            submitText.style.display = 'none';
-            loading.style.display = 'block';
             submitBtn.disabled = true;
+            submitText.style.display = 'none';
+            loading.style.display = 'inline-block';
             
             // Get form values
-            const formData = {
-                firstName: document.getElementById('firstName').value,
-                lastName: document.getElementById('lastName').value,
-                email: document.getElementById('email').value,
-                phone: document.getElementById('phone').value,
-                company: document.getElementById('company').value,
-                websiteType: document.getElementById('websiteType').value,
-                description: document.getElementById('description').value,
-                budget: document.getElementById('budget').value,
-                timeline: document.getElementById('timeline').value
-            };
+            const firstName = document.getElementById('firstName').value;
+            const lastName = document.getElementById('lastName').value;
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
+            const company = document.getElementById('company').value;
+            const websiteType = document.getElementById('websiteType').value;
+            const budget = document.getElementById('budget').value;
+            const description = document.getElementById('description').value;
+            const timeline = document.getElementById('timeline').value;
             
-            // Simulate API call
+            // Format message for WhatsApp
+            const message = `*New Website Project Inquiry*%0A%0A` +
+                `*Personal Details:*%0A` +
+                `• Name: ${firstName} ${lastName}%0A` +
+                `• Email: ${email}%0A` +
+                `• Phone: ${phone || 'N/A'}%0A` +
+                `• Company: ${company || 'N/A'}%0A%0A` +
+                `*Project Details:*%0A` +
+                `• Website Type: ${websiteType}%0A` +
+                `• Budget: ${budget}%0A` +
+                `• Timeline: ${timeline}%0A%0A` +
+                `*Description:*%0A${description}`;
+            
+            // Your WhatsApp number (include country code without +)
+            const phoneNumber = "60122600969";
+            
+            // Create WhatsApp URL
+            const whatsappUrl = `https://wa.me/${phoneNumber}?text=${message}`;
+            
+            // Simulate network delay for better UX
             setTimeout(() => {
-                console.log('Form submitted with data:', formData);
+                // Open WhatsApp in a new tab
+                window.open(whatsappUrl, '_blank');
                 
-                // Hide loading state
+                // Hide loading state and reset button
+                submitBtn.disabled = false;
                 submitText.style.display = 'inline';
                 loading.style.display = 'none';
-                submitBtn.disabled = false;
                 
                 // Show success message
-                const successMessage = document.getElementById('successMessage');
                 successMessage.style.display = 'block';
                 
                 // Reset form
                 this.reset();
                 
-                // Hide success message after 5 seconds
-                setTimeout(() => {
-                    successMessage.style.display = 'none';
-                }, 5000);
-                
-                // Scroll to top of form
+                // Scroll to top of form to see success message
                 window.scrollTo({
                     top: document.querySelector('.form-section').offsetTop - 100,
                     behavior: 'smooth'
                 });
-            }, 1500);
+                
+                // Hide success message after 7 seconds
+                setTimeout(() => {
+                    successMessage.style.display = 'none';
+                }, 7000);
+            }, 1000); // 1 second delay
         });
         
         // Smooth scrolling for navigation links
@@ -1097,18 +1385,40 @@
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    entry.target.style.animation = 'fadeInUp 0.8s ease forwards';
-                    observer.unobserve(entry.target);
+                    entry.target.classList.add('visible');
+                    
+                    // If it's a feature card, add staggered animation
+                    if (entry.target.classList.contains('feature-card')) {
+                        const cards = document.querySelectorAll('.feature-card');
+                        cards.forEach((card, index) => {
+                            setTimeout(() => {
+                                card.style.transitionDelay = `${index * 0.1}s`;
+                                card.classList.add('visible');
+                            }, 100);
+                        });
+                    }
+                    
+                    // If it's a form group, add staggered animation
+                    if (entry.target.classList.contains('form-group')) {
+                        const formGroups = document.querySelectorAll('.form-group');
+                        formGroups.forEach((group, index) => {
+                            setTimeout(() => {
+                                group.style.transitionDelay = `${index * 0.1}s`;
+                                group.classList.add('visible');
+                            }, 100);
+                        });
+                    }
                 }
             });
         }, observerOptions);
         
-        document.querySelectorAll('.feature-card, .stat-item').forEach(card => {
-            observer.observe(card);
+        // Observe all elements with animation
+        document.querySelectorAll('.section-title, .form-section, .feature-card, .stat-item, .form-group').forEach(element => {
+            observer.observe(element);
         });
         
         // Counter animation for stats
-        function animateCounter(element, target) {
+        function animateCounter(element, target, suffix = '') {
             let current = 0;
             const increment = target / 50;
             const timer = setInterval(() => {
@@ -1117,7 +1427,7 @@
                     current = target;
                     clearInterval(timer);
                 }
-                element.textContent = Math.floor(current) + (element.textContent.includes('%') ? '%' : '+');
+                element.textContent = Math.floor(current) + suffix;
             }, 30);
         }
         
@@ -1126,8 +1436,9 @@
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     const statNumbers = entry.target.querySelectorAll('.stat-number');
-                    statNumbers[0] && animateCounter(statNumbers[0], 100);
-                    statNumbers[1] && animateCounter(statNumbers[1], 50);
+                    if(statNumbers[0]) animateCounter(statNumbers[0], 100, '%');
+                    if(statNumbers[1]) animateCounter(statNumbers[1], 50, '+');
+                    // The other stats are not numbers, so we skip them
                     statsObserver.unobserve(entry.target);
                 }
             });
