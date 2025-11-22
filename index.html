@@ -4,8 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DD Network Ent.</title>
+    <meta name="description" content="Transform your vision into extraordinary digital experiences with DD Network Ent. We create sophisticated websites that embody innovation, functionality, and cutting-edge design.">
+    <meta name="keywords" content="web design, digital agency, website development, responsive design, SEO, user experience">
+    <meta name="author" content="DD Network Ent.">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://ddnetwork.uk/">
+    <meta property="og:title" content="DD Network Ent. - Premium Digital Experiences">
+    <meta property="og:description" content="Transform your vision into extraordinary digital experiences with DD Network Ent.">
+    <meta property="og:image" content="https://ddnetwork.uk/images/og-image.jpg">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://ddnetwork.uk/">
+    <meta property="twitter:title" content="DD Network Ent. - Premium Digital Experiences">
+    <meta property="twitter:description" content="Transform your vision into extraordinary digital experiences with DD Network Ent.">
+    <meta property="twitter:image" content="https://ddnetwork.uk/images/og-image.jpg">
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
         :root {
             --primary-white: #ffffff;
@@ -33,7 +51,7 @@
         }
         
         body {
-            font-family: 'Poppins', sans-serif;
+            font-family: 'Inter', sans-serif;
             color: var(--text-dark);
             background-color: var(--primary-white);
             line-height: 1.6;
@@ -44,53 +62,141 @@
         
         /* Scrollbar Styling */
         ::-webkit-scrollbar { 
-            width: 8px; 
+            width: 6px; 
         }
         ::-webkit-scrollbar-track { 
             background: var(--light-gray); 
         }
         ::-webkit-scrollbar-thumb { 
             background: var(--primary-black); 
-            border-radius: 4px; 
+            border-radius: 3px; 
         }
         ::-webkit-scrollbar-thumb:hover {
             background: var(--accent-red);
         }
         
+        /* Loading Screen */
+        .loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--primary-white);
+            color: var(--primary-black);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease, visibility 0.5s ease;
+        }
+        
+        .loading-screen.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+        
+        .loading-logo {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            letter-spacing: -0.5px;
+        }
+        
+        .loading-bar {
+            width: 120px;
+            height: 2px;
+            background-color: rgba(0, 0, 0, 0.1);
+            border-radius: 1px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .loading-progress {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            background: var(--primary-black);
+            border-radius: 1px;
+            animation: loading 2s ease-in-out infinite;
+        }
+        
+        @keyframes loading {
+            0% { width: 0; }
+            50% { width: 70%; }
+            100% { width: 100%; }
+        }
+        
+        /* Back to Top Button */
+        .back-to-top {
+            position: fixed;
+            bottom: 90px;
+            right: 20px;
+            width: 45px;
+            height: 45px;
+            background-color: var(--primary-white);
+            color: var(--primary-black);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s var(--smooth-transition);
+            z-index: 998;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+        
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .back-to-top:hover {
+            background-color: var(--primary-black);
+            color: var(--primary-white);
+            transform: translateY(-3px);
+        }
+        
         /* Header Styles */
         header {
-            background-color: rgba(255, 255, 255, 0.98);
-            backdrop-filter: blur(20px);
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
             padding: 20px 0;
             position: fixed;
             width: 100%;
             top: 0;
             z-index: 1000;
             transition: all 0.3s var(--smooth-transition);
-            border-bottom: 1px solid var(--medium-gray);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
         }
         
         header.scrolled { 
             padding: 15px 0; 
-            box-shadow: 0 2px 20px rgba(0,0,0,0.08); 
+            box-shadow: 0 1px 10px rgba(0,0,0,0.05); 
         }
         
         .header-container {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            max-width: 1400px;
+            max-width: 1200px;
             margin: 0 auto;
-            padding: 0 40px;
+            padding: 0 20px;
         }
         
         .logo-text {
-            font-family: 'Poppins', sans-serif;
-            font-size: 1.8rem;
-            font-weight: 900;
+            font-family: 'Inter', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
             color: var(--primary-black);
             text-decoration: none;
-            letter-spacing: -1px;
+            letter-spacing: -0.5px;
             transition: color 0.3s var(--smooth-transition);
         }
         
@@ -99,16 +205,12 @@
         }
         
         .tagline { 
-            font-size: 0.75rem; 
-            color: var(--text-light); 
-            font-weight: 500; 
-            letter-spacing: 0.5px;
-            margin-top: 2px;
+            display: none; 
         }
         
         /* Hamburger Menu */
         .hamburger {
-            display: none;
+            display: flex;
             flex-direction: column;
             cursor: pointer;
             padding: 5px;
@@ -116,194 +218,187 @@
         }
         
         .hamburger span {
-            width: 25px;
-            height: 3px;
+            width: 20px;
+            height: 2px;
             background: var(--primary-black);
-            margin: 3px 0;
+            margin: 2px 0;
             transition: all 0.3s var(--smooth-transition);
-            border-radius: 2px;
+            border-radius: 1px;
         }
         
         .hamburger.active span:nth-child(1) { 
-            transform: rotate(-45deg) translate(-5px, 5px); 
+            transform: rotate(-45deg) translate(-4px, 4px); 
         }
         .hamburger.active span:nth-child(2) { 
             opacity: 0; 
         }
         .hamburger.active span:nth-child(3) { 
-            transform: rotate(45deg) translate(-5px, -5px); 
+            transform: rotate(45deg) translate(-4px, -4px); 
+        }
+        
+        /* Navigation Styles */
+        nav {
+            flex-grow: 1;
+            display: flex;
+            justify-content: flex-end;
         }
         
         nav ul {
-            display: flex;
+            display: none;
+            position: fixed;
+            left: 0;
+            top: 70px;
+            flex-direction: column;
+            background-color: var(--primary-white);
+            width: 100%;
+            text-align: center;
+            transition: 0.3s var(--smooth-transition);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            padding: 30px 0;
+            z-index: 1000;
             list-style: none;
-            gap: 40px;
+            margin: 0;
+        }
+        
+        nav ul.active { 
+            display: flex; 
         }
         
         nav ul li a {
+            display: block;
             text-decoration: none;
             color: var(--primary-black);
-            font-weight: 700;
+            font-weight: 500;
             font-size: 0.95rem;
             transition: color 0.3s var(--smooth-transition);
-            position: relative;
-            padding: 5px 0;
+            padding: 10px 0;
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 0.5px;
         }
         
-        nav ul li a::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: 0;
-            left: 0;
-            background: var(--accent-red);
-            transition: width 0.3s var(--smooth-transition);
-        }
-        
-        nav ul li a:hover::after { 
-            width: 100%; 
-        }
         nav ul li a:hover { 
             color: var(--accent-red); 
         }
         
         /* Hero Section */
         .hero {
-            min-height: 100vh;
+            min-height: 90vh;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
-            padding: 140px 40px 80px;
+            padding: 100px 20px 60px;
             position: relative;
             overflow: hidden;
-            background-color: var(--primary-black);
-            color: var(--primary-white);
-        }
-        
-        .hero-bg {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, var(--primary-black) 0%, #1a1a1a 100%);
-            z-index: -1;
+            background-color: var(--primary-white);
+            color: var(--primary-black);
         }
         
         .hero-content {
-            max-width: 1000px;
+            max-width: 800px;
             opacity: 0;
             animation: fadeInUp 1.2s ease 0.5s forwards;
         }
         
         .hero h1 {
-            font-family: 'Poppins', sans-serif;
-            font-size: clamp(3rem, 7vw, 5rem);
-            font-weight: 900;
-            margin-bottom: 30px;
-            color: var(--primary-white);
-            line-height: 0.9;
-            letter-spacing: -2px;
-            text-transform: uppercase;
+            font-family: 'Inter', sans-serif;
+            font-size: clamp(2rem, 6vw, 3.5rem);
+            font-weight: 700;
+            margin-bottom: 24px;
+            color: var(--primary-black);
+            line-height: 1.1;
+            letter-spacing: -0.5px;
         }
         
         .hero .subtitle {
-            font-size: 1.4rem;
+            font-size: 0.9rem;
             color: var(--accent-red);
-            margin-bottom: 30px;
-            font-weight: 700;
-            letter-spacing: 2px;
+            margin-bottom: 24px;
+            font-weight: 600;
+            letter-spacing: 1px;
             text-transform: uppercase;
         }
         
         .hero p {
-            font-size: 1.2rem;
-            color: #cccccc;
-            margin: 30px auto 50px;
-            max-width: 700px;
-            line-height: 1.7;
+            font-size: 1rem;
+            color: var(--text-light);
+            margin: 0 auto 32px;
+            max-width: 600px;
+            line-height: 1.6;
         }
         
         .hero-buttons {
             display: flex;
-            gap: 25px;
+            flex-direction: column;
+            gap: 16px;
             justify-content: center;
-            flex-wrap: wrap;
-            margin-top: 40px;
+            align-items: center;
+            margin-top: 32px;
         }
         
         .btn {
             display: inline-block;
-            padding: 18px 40px;
-            border-radius: 50px;
+            padding: 14px 28px;
+            border-radius: 8px;
             text-decoration: none;
-            font-weight: 700;
-            font-size: 1rem;
+            font-weight: 600;
+            font-size: 0.9rem;
             transition: all 0.3s var(--smooth-transition);
-            border: 2px solid transparent;
-            position: relative;
-            overflow: hidden;
-            z-index: 1;
             text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-        
-        .btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 0;
-            height: 100%;
-            background: rgba(255, 255, 255, 0.1);
-            transition: width 0.3s var(--smooth-transition);
-            z-index: -1;
-        }
-        
-        .btn:hover::before {
+            letter-spacing: 0.5px;
             width: 100%;
+            max-width: 240px;
+            cursor: pointer;
+            border: none;
         }
         
         .btn-primary {
-            background: var(--accent-red);
+            background: var(--primary-black);
             color: var(--primary-white);
-            box-shadow: 0 8px 25px rgba(230, 38, 47, 0.3);
+            border: 1px solid var(--primary-black);
         }
         
         .btn-secondary {
             background-color: transparent;
+            color: var(--primary-black);
+            border: 1px solid var(--primary-black);
+        }
+        
+        .btn-accent {
+            background: var(--accent-red);
             color: var(--primary-white);
-            border-color: var(--primary-white);
+            border: 1px solid var(--accent-red);
         }
         
         .btn:hover { 
-            transform: translateY(-3px); 
+            transform: translateY(-2px); 
         }
         .btn-primary:hover { 
-            box-shadow: 0 12px 30px rgba(230, 38, 47, 0.4); 
+            background: var(--accent-red);
+            border-color: var(--accent-red);
         }
         .btn-secondary:hover { 
-            background-color: var(--primary-white); 
-            color: var(--primary-black); 
+            background-color: var(--primary-black); 
+            color: var(--primary-white); 
+        }
+        .btn-accent:hover { 
+            background: var(--primary-black);
+            border-color: var(--primary-black);
         }
         
         /* Main Content */
         main { 
-            padding: 100px 0; 
+            padding: 80px 0; 
         }
         .container { 
-            max-width: 1400px; 
+            max-width: 1200px; 
             margin: 0 auto; 
-            padding: 0 40px; 
+            padding: 0 20px; 
         }
         
         .section-title {
             text-align: center;
-            margin-bottom: 80px;
+            margin-bottom: 64px;
             opacity: 0;
             transform: translateY(20px);
         }
@@ -315,49 +410,292 @@
         }
         
         .section-title h2 {
-            font-family: 'Poppins', sans-serif;
-            font-size: clamp(2.5rem, 5vw, 3.5rem);
-            font-weight: 900;
+            font-family: 'Inter', sans-serif;
+            font-size: clamp(1.5rem, 4vw, 2.2rem);
+            font-weight: 700;
             color: var(--primary-black);
-            margin-bottom: 25px;
-            letter-spacing: -1px;
-            line-height: 1.1;
-            text-transform: uppercase;
+            margin-bottom: 16px;
+            letter-spacing: -0.5px;
+            line-height: 1.2;
         }
         
         .section-title p {
-            font-size: 1.2rem;
+            font-size: 1rem;
             color: var(--text-light);
-            max-width: 700px;
+            max-width: 600px;
             margin: 0 auto;
-            line-height: 1.7;
+            line-height: 1.6;
+        }
+        
+        /* Plans Section */
+        .plans-section {
+            padding: 80px 0;
+            margin-bottom: 80px;
+        }
+        
+        .plans-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 32px;
+        }
+        
+        .plan-card {
+            background-color: var(--primary-white);
+            padding: 40px 30px;
+            border-radius: 12px;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.04);
+            text-align: center;
+            transition: all 0.3s var(--smooth-transition);
+            opacity: 0;
+            transform: translateY(20px);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .plan-card.featured {
+            border-color: var(--accent-red);
+            transform: scale(1.05);
+        }
+        
+        .plan-card.featured::before {
+            content: 'POPULAR';
+            position: absolute;
+            top: 15px;
+            right: -30px;
+            background: var(--accent-red);
+            color: var(--primary-white);
+            padding: 5px 30px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            transform: rotate(45deg);
+        }
+        
+        .plan-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .plan-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+        }
+        
+        .plan-card.featured:hover {
+            transform: scale(1.05) translateY(-5px);
+        }
+        
+        .plan-name {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: var(--primary-black);
+        }
+        
+        .plan-price {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--accent-red);
+            margin-bottom: 8px;
+        }
+        
+        .plan-price span {
+            font-size: 1rem;
+            font-weight: 400;
+            color: var(--text-light);
+        }
+        
+        .plan-description {
+            color: var(--text-light);
+            margin-bottom: 24px;
+            line-height: 1.6;
+        }
+        
+        .plan-features {
+            list-style: none;
+            margin-bottom: 32px;
+            text-align: left;
+        }
+        
+        .plan-features li {
+            padding: 8px 0;
+            color: var(--text-dark);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            display: flex;
+            align-items: center;
+        }
+        
+        .plan-features li:last-child {
+            border-bottom: none;
+        }
+        
+        .plan-features li i {
+            color: var(--accent-red);
+            margin-right: 12px;
+            font-size: 0.9rem;
+        }
+        
+        .plan-btn {
+            width: 100%;
+            padding: 14px 20px;
+            background: var(--primary-black);
+            color: var(--primary-white);
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.3s var(--smooth-transition);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .plan-btn:hover {
+            background: var(--accent-red);
+            transform: translateY(-2px);
+        }
+        
+        /* Process Section */
+        .process-section {
+            padding: 80px 0;
+            margin-bottom: 80px;
+        }
+        
+        .process-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 32px;
+        }
+        
+        .process-item {
+            text-align: center;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s var(--smooth-transition);
+        }
+        
+        .process-item.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .process-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--accent-red);
+            margin-bottom: 16px;
+        }
+        
+        .process-icon {
+            width: 60px;
+            height: 60px;
+            background-color: var(--light-gray);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 24px;
+            font-size: 1.5rem;
+            color: var(--primary-black);
+            transition: all 0.3s var(--smooth-transition);
+        }
+        
+        .process-item:hover .process-icon {
+            background-color: var(--primary-black);
+            color: var(--primary-white);
+        }
+        
+        .process-item h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: var(--primary-black);
+        }
+        
+        .process-item p {
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+        
+        /* Features Section */
+        .features {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 32px;
+            margin-bottom: 80px;
+        }
+        
+        .feature-card {
+            background-color: var(--primary-white);
+            padding: 40px 30px;
+            border-radius: 12px;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.04);
+            text-align: center;
+            transition: all 0.3s var(--smooth-transition);
+            opacity: 0;
+            transform: translateY(20px);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+        
+        .feature-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+            transition: all 0.6s var(--smooth-transition);
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+        }
+        
+        .feature-icon {
+            width: 70px;
+            height: 70px;
+            background-color: var(--light-gray);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 24px;
+            font-size: 1.8rem;
+            color: var(--primary-black);
+            transition: all 0.3s var(--smooth-transition);
+        }
+        
+        .feature-card:hover .feature-icon { 
+            background-color: var(--primary-black);
+            color: var(--primary-white);
+        }
+        
+        .feature-card h3 {
+            font-family: 'Inter', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 16px;
+            color: var(--primary-black);
+        }
+        
+        .feature-card p {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: var(--text-light);
         }
         
         /* Form Section */
         .form-section {
             background-color: var(--primary-white);
-            padding: 60px;
-            border-radius: 20px;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.08);
-            margin-bottom: 100px;
+            padding: 48px;
+            border-radius: 12px;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.04);
+            margin-bottom: 80px;
             opacity: 0;
             transform: translateY(20px);
             position: relative;
             overflow: hidden;
-            max-width: 800px;
+            max-width: 700px;
             margin-left: auto;
             margin-right: auto;
-            border: 1px solid var(--medium-gray);
-        }
-        
-        .form-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 5px;
-            background: linear-gradient(90deg, var(--primary-black), var(--accent-red));
+            border: 1px solid rgba(0, 0, 0, 0.05);
         }
         
         .form-section.visible {
@@ -371,214 +709,125 @@
             margin-bottom: 40px; 
         }
         .form-intro h3 {
-            font-family: 'Poppins', sans-serif;
-            font-size: 2rem;
-            font-weight: 800;
+            font-family: 'Inter', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 600;
             color: var(--primary-black);
-            margin-bottom: 15px;
-            text-transform: uppercase;
+            margin-bottom: 12px;
         }
         
         .form-intro p {
-            font-size: 1.1rem;
+            font-size: 0.95rem;
             color: var(--text-light);
-            line-height: 1.7;
+            line-height: 1.6;
         }
         
         .form-group { 
-            margin-bottom: 25px; 
+            margin-bottom: 24px; 
         }
         .form-group label {
             display: block;
-            margin-bottom: 10px;
-            font-weight: 700;
+            margin-bottom: 8px;
+            font-weight: 500;
             color: var(--primary-black);
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             text-transform: uppercase;
             letter-spacing: 0.5px;
         }
         
         .form-control {
             width: 100%;
-            padding: 18px;
-            border: 2px solid var(--medium-gray);
-            border-radius: 10px;
-            font-family: 'Poppins', sans-serif;
-            font-size: 1rem;
+            padding: 14px;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.95rem;
             transition: all 0.3s var(--smooth-transition);
-            background-color: var(--light-gray);
+            background-color: var(--primary-white);
             color: var(--primary-black);
         }
         
         .form-control:focus {
             outline: none;
             border-color: var(--accent-red);
-            background-color: var(--primary-white);
-            box-shadow: 0 0 0 5px rgba(230, 38, 47, 0.1);
+            box-shadow: 0 0 0 3px rgba(230, 38, 47, 0.1);
         }
         
         .form-row { 
             display: grid; 
-            grid-template-columns: 1fr 1fr; 
-            gap: 25px; 
+            grid-template-columns: 1fr; 
+            gap: 24px; 
         }
         .required { 
             color: var(--accent-red); 
+        }
+        
+        .form-error {
+            color: var(--accent-red);
+            font-size: 0.85rem;
+            margin-top: 5px;
+            display: none;
+        }
+        
+        .form-group.error .form-control {
+            border-color: var(--accent-red);
+        }
+        
+        .form-group.error .form-error {
+            display: block;
         }
         
         .btn-submit {
             background: var(--primary-black);
             color: var(--primary-white);
             border: none;
-            padding: 18px 40px;
-            font-size: 1rem;
-            font-weight: 700;
-            border-radius: 50px;
+            padding: 14px 28px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            border-radius: 8px;
             cursor: pointer;
             transition: all 0.3s var(--smooth-transition);
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 10px;
-            margin: 40px auto 0;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
-            position: relative;
-            overflow: hidden;
+            margin: 32px auto 0;
             text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-        
-        .btn-submit::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
+            letter-spacing: 0.5px;
             width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-            transition: left 0.5s var(--smooth-transition);
-        }
-        
-        .btn-submit:hover::before {
-            left: 100%;
+            max-width: 240px;
         }
         
         .btn-submit:hover { 
-            transform: translateY(-3px); 
-            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4); 
+            background: var(--accent-red);
+            transform: translateY(-2px);
         }
         .btn-submit:disabled { 
             opacity: 0.7; 
             cursor: not-allowed; 
         }
         
-        /* Features Section */
-        .features {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
-            gap: 40px;
-            margin-bottom: 100px;
-        }
-        
-        .feature-card {
-            background-color: var(--primary-white);
-            padding: 50px;
-            border-radius: 20px;
-            box-shadow: 0 15px 40px rgba(0,0,0,0.06);
-            text-align: center;
-            transition: all 0.3s var(--smooth-transition);
-            opacity: 0;
-            transform: translateY(20px);
-            position: relative;
-            overflow: hidden;
-            border: 1px solid var(--medium-gray);
-        }
-        
-        .feature-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 5px;
-            background: linear-gradient(90deg, var(--primary-black), var(--accent-red));
-            transform: scaleX(0);
-            transform-origin: left;
-            transition: transform 0.3s var(--smooth-transition);
-        }
-        
-        .feature-card:hover::before {
-            transform: scaleX(1);
-        }
-        
-        .feature-card.visible {
-            opacity: 1;
-            transform: translateY(0);
-            transition: all 0.6s var(--smooth-transition);
-        }
-        
-        .feature-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 25px 50px rgba(0,0,0,0.12);
-        }
-        
-        .feature-icon {
-            width: 90px;
-            height: 90px;
-            background: linear-gradient(135deg, var(--primary-black) 0%, var(--accent-red) 100%);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 30px;
-            font-size: 2.5rem;
-            color: var(--primary-white);
-            transition: all 0.3s var(--smooth-transition);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
-        }
-        
-        .feature-card:hover .feature-icon { 
-            transform: scale(1.05) rotate(5deg); 
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.35);
-        }
-        .feature-card h3 {
-            font-family: 'Poppins', sans-serif;
-            font-size: 1.6rem;
-            font-weight: 800;
-            margin-bottom: 20px;
-            color: var(--primary-black);
-            text-transform: uppercase;
-        }
-        
-        .feature-card p {
-            font-size: 1.05rem;
-            line-height: 1.7;
-            color: var(--text-light);
-        }
-        
         /* Stats Section */
         .stats-section {
-            background: linear-gradient(135deg, var(--primary-black) 0%, #1a1a1a 100%);
-            padding: 80px 40px;
-            border-radius: 20px;
-            margin-bottom: 100px;
-            color: var(--primary-white);
+            background: var(--light-gray);
+            padding: 64px 20px;
+            border-radius: 12px;
+            margin-bottom: 80px;
+            color: var(--primary-black);
             text-align: center;
-            position: relative;
-            overflow: hidden;
         }
         
         .stats-container {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            grid-template-columns: repeat(2, 1fr);
             gap: 40px;
-            position: relative;
-            z-index: 1;
+            max-width: 600px;
+            margin: 0 auto;
         }
         
         .stat-item { 
             opacity: 0; 
-            transform: scale(0.8); 
+            transform: scale(0.9); 
         }
         .stat-item.visible {
             opacity: 1;
@@ -587,96 +836,57 @@
         }
         
         .stat-number {
-            font-family: 'Poppins', sans-serif;
-            font-size: 3.5rem;
-            font-weight: 900;
-            color: var(--primary-white);
-            margin-bottom: 15px;
+            font-family: 'Inter', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary-black);
+            margin-bottom: 8px;
         }
         
         .stat-label { 
-            font-size: 1.2rem; 
-            font-weight: 600; 
-            letter-spacing: 0.5px; 
+            font-size: 0.9rem; 
+            font-weight: 500; 
+            color: var(--text-light);
             text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
         
         /* Footer */
         footer {
-            background-color: var(--primary-black);
-            color: var(--primary-white);
-            padding: 80px 0 40px;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        footer::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 5px;
-            background: linear-gradient(90deg, var(--primary-black), var(--accent-red));
+            background-color: var(--primary-white);
+            color: var(--primary-black);
+            padding: 64px 0 32px;
+            border-top: 1px solid rgba(0, 0, 0, 0.05);
         }
         
         .footer-content {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 50px;
-            margin-bottom: 50px;
+            grid-template-columns: 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
         }
         
         .footer-section h3 {
-            font-family: 'Poppins', sans-serif;
-            font-size: 1.6rem;
-            font-weight: 800;
-            margin-bottom: 25px;
-            position: relative;
-            padding-bottom: 15px;
-            color: var(--primary-white);
-            text-transform: uppercase;
-        }
-        
-        .footer-section h3::after {
-            content: '';
-            position: absolute;
-            width: 60px;
-            height: 3px;
-            background: var(--accent-red);
-            bottom: 0;
-            left: 0;
+            font-family: 'Inter', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: var(--primary-black);
         }
         
         .footer-section p, .footer-section li {
-            margin-bottom: 15px;
-            color: #cccccc;
-            line-height: 1.7;
-            font-size: 1.05rem;
+            margin-bottom: 12px;
+            color: var(--text-light);
+            line-height: 1.6;
+            font-size: 0.9rem;
         }
         
         .footer-section ul { list-style: none; }
         .footer-section a {
-            color: #cccccc;
+            color: var(--text-light);
             text-decoration: none;
             transition: color 0.3s var(--smooth-transition);
-            position: relative;
-            font-size: 1.05rem;
-        }
-        
-        .footer-section a::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: -2px;
-            left: 0;
-            background: var(--accent-red);
-            transition: width 0.3s var(--smooth-transition);
-        }
-        
-        .footer-section a:hover::after {
-            width: 100%;
+            font-size: 0.9rem;
         }
         
         .footer-section a:hover { 
@@ -684,35 +894,34 @@
         }
         .social-links {
             display: flex;
-            gap: 20px;
-            margin-top: 30px;
+            gap: 16px;
+            margin-top: 20px;
         }
         
         .social-links a {
             display: flex;
             align-items: center;
             justify-content: center;
-            width: 50px;
-            height: 50px;
-            background-color: rgba(255, 255, 255, 0.1);
+            width: 40px;
+            height: 40px;
+            background-color: var(--light-gray);
             border-radius: 50%;
             transition: all 0.3s var(--smooth-transition);
-            color: var(--primary-white);
-            font-size: 1.2rem;
+            color: var(--primary-black);
+            font-size: 1rem;
         }
         
         .social-links a:hover {
-            background-color: var(--accent-red);
+            background-color: var(--primary-black);
             color: var(--primary-white);
-            transform: translateY(-3px);
         }
         
         .copyright {
             text-align: center;
-            padding-top: 40px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            font-size: 0.95rem;
-            color: #cccccc;
+            padding-top: 24px;
+            border-top: 1px solid rgba(0, 0, 0, 0.05);
+            font-size: 0.85rem;
+            color: var(--text-light);
         }
         
         /* Success Message */
@@ -720,32 +929,20 @@
             display: none;
             background: rgba(230, 38, 47, 0.1);
             color: var(--accent-red);
-            padding: 20px;
-            border-radius: 10px;
-            margin-bottom: 25px;
+            padding: 16px;
+            border-radius: 8px;
+            margin-bottom: 24px;
             text-align: center;
             font-weight: 500;
-            font-size: 1.05rem;
+            font-size: 0.9rem;
             animation: slideDown 0.4s var(--smooth-transition);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .success-message::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 5px;
-            height: 100%;
-            background: var(--accent-red);
         }
         
         /* Loading Animation */
         .loading {
             display: none;
-            width: 20px;
-            height: 20px;
+            width: 16px;
+            height: 16px;
             border: 2px solid rgba(255,255,255,0.3);
             border-top-color: white;
             border-radius: 50%;
@@ -756,7 +953,7 @@
         @keyframes fadeInUp { 
             from { 
                 opacity: 0; 
-                transform: translateY(40px); 
+                transform: translateY(30px); 
             } 
             to { 
                 opacity: 1; 
@@ -766,7 +963,7 @@
         @keyframes slideDown { 
             from { 
                 opacity: 0; 
-                transform: translateY(-20px); 
+                transform: translateY(-15px); 
             } 
             to { 
                 opacity: 1; 
@@ -779,148 +976,250 @@
             } 
         }
         
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .modal.show {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 1;
+        }
+        
+        .modal-content {
+            background-color: var(--primary-white);
+            padding: 40px;
+            border-radius: 12px;
+            width: 90%;
+            max-width: 600px;
+            position: relative;
+            transform: translateY(20px);
+            transition: transform 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+        
+        .modal.show .modal-content {
+            transform: translateY(0);
+        }
+        
+        .modal-close {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 1.5rem;
+            color: var(--text-light);
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+        
+        .modal-close:hover {
+            color: var(--accent-red);
+        }
+        
+        .modal-title {
+            font-family: 'Inter', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: var(--primary-black);
+        }
+        
+        .modal-description {
+            font-size: 0.95rem;
+            color: var(--text-light);
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+        
         /* Customer Service Button */
         .customer-service-btn {
             position: fixed;
-            top: 120px;
-            right: 30px;
-            width: 70px;
-            height: 70px;
+            bottom: 20px;
+            right: 20px;
+            width: 56px;
+            height: 56px;
             background-color: #25D366;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             color: white;
-            font-size: 32px;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            font-size: 24px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
             z-index: 999;
             transition: all 0.3s var(--smooth-transition);
             text-decoration: none;
         }
         
         .customer-service-btn:hover {
-            transform: scale(1.1);
-            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.3);
+            transform: scale(1.05);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
         }
         
-        .customer-service-btn::before {
-            content: '';
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            border-radius: 50%;
-            background-color: rgba(255, 255, 255, 0.1);
-            z-index: -1;
-            animation: pulse 2s infinite;
-        }
-        
-        @keyframes pulse {
-            0% {
-                transform: scale(1);
-                opacity: 0.7;
-            }
-            70% {
-                transform: scale(1.3);
-                opacity: 0;
-            }
-            100% {
-                transform: scale(1.3);
-                opacity: 0;
-            }
-        }
-        
-        /* Responsive Design */
-        @media (max-width: 992px) {
-            .form-row { 
-                grid-template-columns: 1fr; 
-            }
-        }
-        
-        @media (max-width: 768px) {
-            .hamburger { 
-                display: flex; 
-            }
-            nav ul {
-                position: fixed;
-                left: -100%;
-                top: 90px;
-                flex-direction: column;
-                background-color: var(--primary-white);
-                width: 100%;
-                text-align: center;
-                transition: 0.3s var(--smooth-transition);
-                box-shadow: 0 5px 20px rgba(0,0,0,0.08);
-                padding: 30px 0;
-                z-index: 1000;
+        /* Tablet Styles */
+        @media (min-width: 768px) {
+            .hero-buttons {
+                flex-direction: row;
             }
             
-            nav ul.active { 
-                left: 0; 
+            .btn {
+                width: auto;
+                max-width: none;
             }
-            .hero { 
-                padding: 120px 20px 60px; 
-            }
-            .form-section { 
-                padding: 40px 25px; 
-                margin: 0 20px 80px;
-            }
-            .stats-container {
+            
+            .features {
                 grid-template-columns: repeat(2, 1fr);
             }
-            .customer-service-btn {
-                top: 100px;
-                right: 20px;
-                width: 60px;
-                height: 60px;
-                font-size: 28px;
+            
+            .stats-container {
+                grid-template-columns: repeat(4, 1fr);
             }
-            .header-container {
-                padding: 0 20px;
+            
+            .footer-content {
+                grid-template-columns: repeat(2, 1fr);
             }
+            
+            .form-row {
+                grid-template-columns: 1fr 1fr;
+            }
+            
+            .hero {
+                padding: 120px 30px 80px;
+            }
+            
             .container {
-                padding: 0 20px;
+                padding: 0 30px;
             }
         }
         
-        @media (max-width: 480px) {
-            .hero-buttons { 
-                flex-direction: column; 
-                align-items: center; 
-                gap: 20px;
+        /* Desktop Styles */
+        @media (min-width: 992px) {
+            .hamburger {
+                display: none;
             }
-            .btn { 
-                width: 100%; 
-                max-width: 300px; 
-            }
-            .stats-container {
-                grid-template-columns: 1fr;
-            }
-            .footer-content {
-                grid-template-columns: 1fr;
+            
+            nav ul {
+                display: flex;
+                flex-direction: row;
+                position: static;
+                background-color: transparent;
+                box-shadow: none;
+                padding: 0;
                 gap: 40px;
+                width: auto;
+                align-items: center;
             }
-            .form-section {
-                padding: 30px 20px;
+            
+            nav ul li a {
+                padding: 5px 0;
+                white-space: nowrap;
             }
+            
+            .hero {
+                padding: 140px 40px 100px;
+            }
+            
+            .container {
+                padding: 0 40px;
+            }
+            
             .features {
-                grid-template-columns: 1fr;
+                grid-template-columns: repeat(3, 1fr);
+            }
+            
+            .footer-content {
+                grid-template-columns: repeat(4, 1fr);
+            }
+            
+            .hero h1 {
+                font-size: clamp(2.5rem, 5vw, 4rem);
+            }
+            
+            .section-title h2 {
+                font-size: clamp(1.8rem, 3vw, 2.5rem);
+            }
+            
+            .feature-card {
+                padding: 48px 32px;
+            }
+            
+            .feature-icon {
+                width: 80px;
+                height: 80px;
+                font-size: 2rem;
+            }
+            
+            .feature-card h3 {
+                font-size: 1.3rem;
+            }
+            
+            .stat-number {
+                font-size: 3rem;
+            }
+        }
+        
+        /* Large Desktop Styles */
+        @media (min-width: 1200px) {
+            .header-container {
+                padding: 0 40px;
+            }
+            
+            .container {
+                padding: 0 40px;
+            }
+            
+            .hero {
+                padding: 160px 40px 120px;
+            }
+            
+            .hero-content {
+                max-width: 900px;
+            }
+            
+            .form-section {
+                max-width: 800px;
             }
         }
     </style>
 </head>
 <body>
+    <!-- Loading Screen -->
+    <div class="loading-screen" id="loadingScreen">
+        <div class="loading-logo">DD NETWORK ENT.</div>
+        <div class="loading-bar">
+            <div class="loading-progress"></div>
+        </div>
+    </div>
+    
+    <!-- Back to Top Button -->
+    <div class="back-to-top" id="backToTop">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+    
     <header id="header">
         <div class="header-container">
             <div>
                 <a href="#" class="logo-text">DD Network Ent.</a>
-                <div class="tagline">Premium Digital Experiences</div>
             </div>
             <nav>
-                <ul>
+                <ul id="navMenu">
                     <li><a href="#home">Home</a></li>
+                    <li><a href="#plans">Plans</a></li>
+                    <li><a href="#process">Process</a></li>
                     <li><a href="#services">Services</a></li>
-                    <li><a href="#portfolio">Portfolio</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
             </nav>
@@ -938,111 +1237,261 @@
     </a>
     
     <section class="hero" id="home">
-        <div class="hero-bg"></div>
         <div class="hero-content">
-            <h1>DIGITAL EXCELLENCE REDEFINED</h1>
+            <h1>Digital Excellence Redefined</h1>
             <div class="subtitle">Crafted with Precision • Engineered for Impact</div>
-            <p>We transform your vision into an extraordinary digital experience, creating sophisticated websites that embody innovation, functionality, and cutting-edge design.</p>
+            <p>We transform your vision into extraordinary digital experiences, creating sophisticated websites that embody innovation, functionality, and cutting-edge design.</p>
             <div class="hero-buttons">
-                <a href="#contact" class="btn btn-primary">Start Your Project</a>
-                <a href="#services" class="btn btn-secondary">Explore Our Work</a>
+                <button class="btn btn-primary" id="openInterestModal">Sign Up Interest</button>
+                <a href="#plans" class="btn btn-secondary">View Plans</a>
             </div>
         </div>
     </section>
     
-    <main>
-        <div class="container">
-            <div class="section-title">
-                <h2>SHAPE YOUR DIGITAL PRESENCE</h2>
-                <p>Every exceptional website begins with a vision. Share yours with us, and we'll craft a digital experience that captivates, converts, and exceeds expectations.</p>
+    <!-- Interest Modal -->
+    <div class="modal" id="interestModal">
+        <div class="modal-content">
+            <span class="modal-close" id="closeInterestModal">&times;</span>
+            <h3 class="modal-title">Sign Up Your Interest</h3>
+            <p class="modal-description">Join our exclusive community and be the first to know about our latest projects, special offers, and digital innovation insights.</p>
+            
+            <div class="success-message" id="interestSuccessMessage">
+                <i class="fas fa-check-circle"></i> Thank you for your interest! We'll be in touch soon.
             </div>
             
-            <div class="form-section" id="contact">
-                <div class="success-message" id="successMessage">
-                    <i class="fas fa-check-circle"></i> Thank you! Your project details have been sent. We will contact you soon.
+            <form id="interestForm" action="https://formsubmit.co/ddbusiness.co@outlook.com" method="POST" novalidate>
+                <!-- FormSubmit.co Configuration -->
+                <input type="hidden" name="_captcha" value="false">
+                <input type="hidden" name="_subject" value="New Interest Signup from DD Network Ent.">
+                <input type="hidden" name="_template" value="table">
+                
+                <div class="form-group">
+                    <label for="interestName">Full Name <span class="required">*</span></label>
+                    <input type="text" id="interestName" name="name" class="form-control" required>
+                    <div class="form-error">Please enter your full name</div>
                 </div>
                 
-                <form id="websiteForm" action="https://formsubmit.co/ddbusiness.co@outlook.com" method="POST">
-                    <!-- FormSubmit.co Configuration -->
-                    <input type="hidden" name="_captcha" value="false">
-                    <input type="hidden" name="_subject" value="New Website Project Inquiry from DD Network Ent.">
-                    <input type="hidden" name="_template" value="table">
-                    <input type="hidden" name="_next" value="https://store.ddnetwork.uk">
-                    
-                    <div class="form-intro">
-                        <h3>Project Inquiry</h3>
-                        <p>Tell us about your vision. The more details you provide, the better we can bring your ideas to life.</p>
-                    </div>
-                    
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="firstName">First Name <span class="required">*</span></label>
-                            <input type="text" id="firstName" name="firstName" class="form-control" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="lastName">Last Name <span class="required">*</span></label>
-                            <input type="text" id="lastName" name="lastName" class="form-control" required>
-                        </div>
-                    </div>
-                    
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="email">Email Address <span class="required">*</span></label>
-                            <input type="email" id="email" name="email" class="form-control" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="phone">Phone Number</label>
-                            <input type="tel" id="phone" name="phone" class="form-control" placeholder="+60 12-345 6789">
-                        </div>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="company">Company Name</label>
-                        <input type="text" id="company" name="company" class="form-control" placeholder="Your company or brand name">
-                    </div>
-                    
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="websiteType">Website Type <span class="required">*</span></label>
-                            <select id="websiteType" name="websiteType" class="form-control" required>
-                                <option value="">Select a type</option>
-                                <option value="Portfolio">Portfolio</option>
-                                <option value="E-commerce">E-commerce</option>
-                                <option value="Corporate">Corporate</option>
-                                <option value="Blog/Magazine">Blog/Magazine</option>
-                                <option value="Landing Page">Landing Page</option>
-                                <option value="Creative/Agency">Creative/Agency</option>
-                                <option value="Other">Other</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="budget">Estimated Budget <span class="required">*</span></label>
-                            <select id="budget" name="budget" class="form-control" required>
-                                <option value="">Select a budget range</option>
-                                <option value="RM 100 - RM 500">RM 100 - RM 500</option>
-                                <option value="RM 500 - RM 1,000">RM 500 - RM 1,000</option>
-                                <option value="RM 1,000 - RM 2,500">RM 1,000 - RM 2,500</option>
-                                <option value="RM 2,500 - RM 5,000">RM 2,500 - RM 5,000</option>
-                                <option value="RM 5,000+">RM 5,000+</option>
-                                <option value="Custom Quote">Custom Quote</option>
-                            </select>
-                        </div>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="description">Describe Your Vision <span class="required">*</span></label>
-                        <textarea id="description" name="description" class="form-control" rows="4" placeholder="Describe the look, feel, and functionality you envision..." required></textarea>
-                    </div>
-                    
-                    <button type="submit" class="btn-submit" id="submitBtn">
-                        <span id="submitText">Submit Project Request</span>
-                        <div class="loading" id="loading"></div>
-                    </button>
-                </form>
+                <div class="form-group">
+                    <label for="interestEmail">Email Address <span class="required">*</span></label>
+                    <input type="email" id="interestEmail" name="email" class="form-control" required>
+                    <div class="form-error">Please enter a valid email address</div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="interestCompany">Company Name</label>
+                    <input type="text" id="interestCompany" name="company" class="form-control" placeholder="Your company or organization">
+                </div>
+                
+                <div class="form-group">
+                    <label for="interestArea">Area of Interest</label>
+                    <select id="interestArea" name="interest" class="form-control">
+                        <option value="">Select an area</option>
+                        <option value="Web Design">Web Design</option>
+                        <option value="E-commerce Solutions">E-commerce Solutions</option>
+                        <option value="Mobile App Development">Mobile App Development</option>
+                        <option value="SEO Services">SEO Services</option>
+                        <option value="Digital Marketing">Digital Marketing</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="interestMessage">Additional Information</label>
+                    <textarea id="interestMessage" name="message" class="form-control" rows="4" placeholder="Tell us more about your interest..."></textarea>
+                </div>
+                
+                <button type="submit" class="btn-submit" id="interestSubmitBtn">
+                    <span id="interestSubmitText">Submit Interest</span>
+                    <div class="loading" id="interestLoading"></div>
+                </button>
+            </form>
+        </div>
+    </div>
+    
+    <!-- Plan Modal -->
+    <div class="modal" id="planModal">
+        <div class="modal-content">
+            <span class="modal-close" id="closePlanModal">&times;</span>
+            <h3 class="modal-title">Complete Your Order</h3>
+            <p class="modal-description">Fill in your details to get started with your selected plan.</p>
+            
+            <div class="success-message" id="planSuccessMessage">
+                <i class="fas fa-check-circle"></i> Thank you! Your order has been received. We'll contact you soon.
             </div>
             
+            <form id="planForm" action="https://formsubmit.co/ddbusiness.co@outlook.com" method="POST" novalidate>
+                <!-- FormSubmit.co Configuration -->
+                <input type="hidden" name="_captcha" value="false">
+                <input type="hidden" name="_subject" value="New Plan Order from DD Network Ent.">
+                <input type="hidden" name="_template" value="table">
+                <input type="hidden" id="selectedPlan" name="plan" value="">
+                
+                <div class="form-group">
+                    <label for="planName">Full Name <span class="required">*</span></label>
+                    <input type="text" id="planName" name="name" class="form-control" required>
+                    <div class="form-error">Please enter your full name</div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="planEmail">Email Address <span class="required">*</span></label>
+                    <input type="email" id="planEmail" name="email" class="form-control" required>
+                    <div class="form-error">Please enter a valid email address</div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="planPhone">Phone Number <span class="required">*</span></label>
+                    <input type="tel" id="planPhone" name="phone" class="form-control" placeholder="+60 12-345 6789" required>
+                    <div class="form-error">Please enter your phone number</div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="planCompany">Company Name</label>
+                    <input type="text" id="planCompany" name="company" class="form-control" placeholder="Your company or brand name">
+                </div>
+                
+                <div class="form-group">
+                    <label for="planDescription">Project Details <span class="required">*</span></label>
+                    <textarea id="planDescription" name="description" class="form-control" rows="4" placeholder="Describe your project requirements..." required></textarea>
+                    <div class="form-error">Please describe your project requirements</div>
+                </div>
+                
+                <button type="submit" class="btn-submit" id="planSubmitBtn">
+                    <span id="planSubmitText">Submit Order</span>
+                    <div class="loading" id="planLoading"></div>
+                </button>
+            </form>
+        </div>
+    </div>
+    
+    <main>
+        <div class="container">
+            <div class="section-title" id="plans">
+                <h2>Choose Your Plan</h2>
+                <p>Select the perfect plan for your business needs and budget</p>
+            </div>
+            
+            <section class="plans-section">
+                <div class="plans-grid">
+                    <div class="plan-card">
+                        <h3 class="plan-name">Starter</h3>
+                        <div class="plan-price">RM 500<span>/project</span></div>
+                        <p class="plan-description">Perfect for small businesses and startups looking to establish their online presence.</p>
+                        <ul class="plan-features">
+                            <li><i class="fas fa-check"></i> 5-Page Website</li>
+                            <li><i class="fas fa-check"></i> Responsive Design</li>
+                            <li><i class="fas fa-check"></i> Contact Form</li>
+                            <li><i class="fas fa-check"></i> Basic SEO</li>
+                            <li><i class="fas fa-check"></i> 1 Month Support</li>
+                        </ul>
+                        <button class="plan-btn" data-plan="Starter - RM 500">Choose Plan</button>
+                    </div>
+                    
+                    <div class="plan-card featured">
+                        <h3 class="plan-name">Professional</h3>
+                        <div class="plan-price">RM 1,500<span>/project</span></div>
+                        <p class="plan-description">Ideal for growing businesses that need a professional online presence with advanced features.</p>
+                        <ul class="plan-features">
+                            <li><i class="fas fa-check"></i> 10-Page Website</li>
+                            <li><i class="fas fa-check"></i> Premium Design</li>
+                            <li><i class="fas fa-check"></i> Advanced Contact Forms</li>
+                            <li><i class="fas fa-check"></i> Advanced SEO</li>
+                            <li><i class="fas fa-check"></i> 3 Months Support</li>
+                            <li><i class="fas fa-check"></i> Basic Analytics</li>
+                        </ul>
+                        <button class="plan-btn" data-plan="Professional - RM 1,500">Choose Plan</button>
+                    </div>
+                    
+                    <div class="plan-card">
+                        <h3 class="plan-name">Business</h3>
+                        <div class="plan-price">RM 3,000<span>/project</span></div>
+                        <p class="plan-description">Comprehensive solution for established businesses requiring advanced functionality.</p>
+                        <ul class="plan-features">
+                            <li><i class="fas fa-check"></i> 20-Page Website</li>
+                            <li><i class="fas fa-check"></i> Custom Design</li>
+                            <li><i class="fas fa-check"></i> Database Integration</li>
+                            <li><i class="fas fa-check"></i> Advanced SEO</li>
+                            <li><i class="fas fa-check"></i> 6 Months Support</li>
+                            <li><i class="fas fa-check"></i> Advanced Analytics</li>
+                            <li><i class="fas fa-check"></i> Performance Optimization</li>
+                        </ul>
+                        <button class="plan-btn" data-plan="Business - RM 3,000">Choose Plan</button>
+                    </div>
+                    
+                    <div class="plan-card">
+                        <h3 class="plan-name">Enterprise</h3>
+                        <div class="plan-price">RM 5,000<span>/project</span></div>
+                        <p class="plan-description">Complete digital solution for large businesses with complex requirements.</p>
+                        <ul class="plan-features">
+                            <li><i class="fas fa-check"></i> Unlimited Pages</li>
+                            <li><i class="fas fa-check"></i> Bespoke Design</li>
+                            <li><i class="fas fa-check"></i> Advanced Functionality</li>
+                            <li><i class="fas fa-check"></i> Premium SEO</li>
+                            <li><i class="fas fa-check"></i> 12 Months Support</li>
+                            <li><i class="fas fa-check"></i> Premium Analytics</li>
+                            <li><i class="fas fa-check"></i> Performance Optimization</li>
+                            <li><i class="fas fa-check"></i> Priority Support</li>
+                        </ul>
+                        <button class="plan-btn" data-plan="Enterprise - RM 5,000">Choose Plan</button>
+                    </div>
+                </div>
+            </section>
+            
+            <div class="section-title">
+                <h2>Our Process</h2>
+                <p>From concept to launch, we follow a streamlined approach to ensure your project exceeds expectations</p>
+            </div>
+            
+            <section class="process-section" id="process">
+                <div class="process-grid">
+                    <div class="process-item">
+                        <div class="process-number">01</div>
+                        <div class="process-icon">
+                            <i class="fas fa-search"></i>
+                        </div>
+                        <h3>Discovery</h3>
+                        <p>We begin by understanding your business goals, target audience, and vision for the project.</p>
+                    </div>
+                    
+                    <div class="process-item">
+                        <div class="process-number">02</div>
+                        <div class="process-icon">
+                            <i class="fas fa-chess"></i>
+                        </div>
+                        <h3>Strategy</h3>
+                        <p>Our team develops a comprehensive strategy that aligns with your objectives and market needs.</p>
+                    </div>
+                    
+                    <div class="process-item">
+                        <div class="process-number">03</div>
+                        <div class="process-icon">
+                            <i class="fas fa-palette"></i>
+                        </div>
+                        <h3>Design</h3>
+                        <p>We create stunning, user-centered designs that bring your vision to life.</p>
+                    </div>
+                    
+                    <div class="process-item">
+                        <div class="process-number">04</div>
+                        <div class="process-icon">
+                            <i class="fas fa-code"></i>
+                        </div>
+                        <h3>Development</h3>
+                        <p>Our developers build robust, scalable solutions using cutting-edge technologies.</p>
+                    </div>
+                    
+                    <div class="process-item">
+                        <div class="process-number">05</div>
+                        <div class="process-icon">
+                            <i class="fas fa-rocket"></i>
+                        </div>
+                        <h3>Launch</h3>
+                        <p>We deploy your project with precision and provide ongoing support for optimal performance.</p>
+                    </div>
+                </div>
+            </section>
+            
             <div class="section-title" id="services">
-                <h2>PREMIUM DIGITAL SOLUTIONS</h2>
+                <h2>Premium Digital Solutions</h2>
                 <p>Cutting-edge web design services engineered for excellence and impact</p>
             </div>
             
@@ -1077,6 +1526,101 @@
                     <h3>Premium Support</h3>
                     <p>Dedicated ongoing support and maintenance to ensure your website performs at the highest standard.</p>
                 </div>
+            </div>
+            
+            <div class="section-title">
+                <h2>Get In Touch</h2>
+                <p>Ready to start your next digital project? Let's discuss how we can help you achieve your goals.</p>
+            </div>
+            
+            <div class="form-section" id="contact">
+                <div class="success-message" id="successMessage">
+                    <i class="fas fa-check-circle"></i> Thank you! Your project details have been sent. We will contact you soon.
+                </div>
+                
+                <form id="websiteForm" action="https://formsubmit.co/ddbusiness.co@outlook.com" method="POST" novalidate>
+                    <!-- FormSubmit.co Configuration -->
+                    <input type="hidden" name="_captcha" value="false">
+                    <input type="hidden" name="_subject" value="New Website Project Inquiry from DD Network Ent.">
+                    <input type="hidden" name="_template" value="table">
+                    <input type="hidden" name="_next" value="https://store.ddnetwork.uk">
+                    
+                    <div class="form-intro">
+                        <h3>Project Inquiry</h3>
+                        <p>Tell us about your vision. The more details you provide, the better we can bring your ideas to life.</p>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="firstName">First Name <span class="required">*</span></label>
+                            <input type="text" id="firstName" name="firstName" class="form-control" required>
+                            <div class="form-error">Please enter your first name</div>
+                        </div>
+                        <div class="form-group">
+                            <label for="lastName">Last Name <span class="required">*</span></label>
+                            <input type="text" id="lastName" name="lastName" class="form-control" required>
+                            <div class="form-error">Please enter your last name</div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="email">Email Address <span class="required">*</span></label>
+                            <input type="email" id="email" name="email" class="form-control" required>
+                            <div class="form-error">Please enter a valid email address</div>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" name="phone" class="form-control" placeholder="+60 12-345 6789">
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="company">Company Name</label>
+                        <input type="text" id="company" name="company" class="form-control" placeholder="Your company or brand name">
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="websiteType">Website Type <span class="required">*</span></label>
+                            <select id="websiteType" name="websiteType" class="form-control" required>
+                                <option value="">Select a type</option>
+                                <option value="Portfolio">Portfolio</option>
+                                <option value="E-commerce">E-commerce</option>
+                                <option value="Corporate">Corporate</option>
+                                <option value="Blog/Magazine">Blog/Magazine</option>
+                                <option value="Landing Page">Landing Page</option>
+                                <option value="Creative/Agency">Creative/Agency</option>
+                                <option value="Other">Other</option>
+                            </select>
+                            <div class="form-error">Please select a website type</div>
+                        </div>
+                        <div class="form-group">
+                            <label for="budget">Estimated Budget <span class="required">*</span></label>
+                            <select id="budget" name="budget" class="form-control" required>
+                                <option value="">Select a budget range</option>
+                                <option value="RM 100 - RM 500">RM 100 - RM 500</option>
+                                <option value="RM 500 - RM 1,000">RM 500 - RM 1,000</option>
+                                <option value="RM 1,000 - RM 2,500">RM 1,000 - RM 2,500</option>
+                                <option value="RM 2,500 - RM 5,000">RM 2,500 - RM 5,000</option>
+                                <option value="RM 5,000+">RM 5,000+</option>
+                                <option value="Custom Quote">Custom Quote</option>
+                            </select>
+                            <div class="form-error">Please select a budget range</div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="description">Describe Your Vision <span class="required">*</span></label>
+                        <textarea id="description" name="description" class="form-control" rows="4" placeholder="Describe the look, feel, and functionality you envision..." required></textarea>
+                        <div class="form-error">Please describe your project vision</div>
+                    </div>
+                    
+                    <button type="submit" class="btn-submit" id="submitBtn">
+                        <span id="submitText">Submit Project Request</span>
+                        <div class="loading" id="loading"></div>
+                    </button>
+                </form>
             </div>
             
             <div class="stats-section">
@@ -1119,8 +1663,9 @@
                     <h3>Quick Links</h3>
                     <ul>
                         <li><a href="#home">Home</a></li>
+                        <li><a href="#plans">Plans</a></li>
+                        <li><a href="#process">Process</a></li>
                         <li><a href="#services">Services</a></li>
-                        <li><a href="#portfolio">Portfolio</a></li>
                         <li><a href="#contact">Contact</a></li>
                     </ul>
                 </div>
@@ -1147,9 +1692,34 @@
     </footer>
     
     <script>
+        // Loading Screen
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                document.getElementById('loadingScreen').classList.add('hidden');
+            }, 1200);
+        });
+        
+        // Back to Top Button
+        const backToTopButton = document.getElementById('backToTop');
+        
+        window.addEventListener('scroll', function() {
+            if (window.pageYOffset > 300) {
+                backToTopButton.classList.add('visible');
+            } else {
+                backToTopButton.classList.remove('visible');
+            }
+        });
+        
+        backToTopButton.addEventListener('click', function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+        
         // Hamburger Menu Toggle
         const hamburger = document.getElementById('hamburger');
-        const navMenu = document.querySelector('nav ul');
+        const navMenu = document.getElementById('navMenu');
         
         hamburger.addEventListener('click', () => {
             hamburger.classList.toggle('active');
@@ -1176,17 +1746,192 @@
             }
         });
         
-        // Form submission
-        document.getElementById('websiteForm').addEventListener('submit', function(e) {
-            const submitBtn = document.getElementById('submitBtn');
-            const submitText = document.getElementById('submitText');
-            const loading = document.getElementById('loading');
-            const successMessage = document.getElementById('successMessage');
+        // Interest Modal
+        const interestModal = document.getElementById('interestModal');
+        const openInterestModalBtn = document.getElementById('openInterestModal');
+        const closeInterestModalBtn = document.getElementById('closeInterestModal');
+        
+        openInterestModalBtn.addEventListener('click', function() {
+            interestModal.classList.add('show');
+            document.body.style.overflow = 'hidden';
+        });
+        
+        closeInterestModalBtn.addEventListener('click', function() {
+            interestModal.classList.remove('show');
+            document.body.style.overflow = 'auto';
+        });
+        
+        // Plan Modal
+        const planModal = document.getElementById('planModal');
+        const closePlanModalBtn = document.getElementById('closePlanModal');
+        const selectedPlanInput = document.getElementById('selectedPlan');
+        
+        closePlanModalBtn.addEventListener('click', function() {
+            planModal.classList.remove('show');
+            document.body.style.overflow = 'auto';
+        });
+        
+        // Plan selection buttons
+        document.querySelectorAll('.plan-btn').forEach(button => {
+            button.addEventListener('click', function() {
+                const planName = this.getAttribute('data-plan');
+                selectedPlanInput.value = planName;
+                planModal.classList.add('show');
+                document.body.style.overflow = 'hidden';
+            });
+        });
+        
+        // Close modals when clicking outside
+        window.addEventListener('click', function(event) {
+            if (event.target === interestModal) {
+                interestModal.classList.remove('show');
+                document.body.style.overflow = 'auto';
+            }
+            if (event.target === planModal) {
+                planModal.classList.remove('show');
+                document.body.style.overflow = 'auto';
+            }
+        });
+        
+        // Interest Form Validation
+        document.getElementById('interestForm').addEventListener('submit', function(e) {
+            e.preventDefault();
             
-            // Show loading state
-            submitBtn.disabled = true;
-            submitText.textContent = 'Processing...';
-            loading.style.display = 'inline-block';
+            // Reset previous errors
+            document.querySelectorAll('#interestForm .form-group').forEach(group => {
+                group.classList.remove('error');
+            });
+            
+            // Validate form
+            let isValid = true;
+            const requiredFields = ['interestName', 'interestEmail'];
+            
+            requiredFields.forEach(fieldId => {
+                const field = document.getElementById(fieldId);
+                if (!field.value.trim()) {
+                    field.closest('.form-group').classList.add('error');
+                    isValid = false;
+                }
+            });
+            
+            // Validate email format
+            const emailField = document.getElementById('interestEmail');
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (emailField.value && !emailRegex.test(emailField.value)) {
+                emailField.closest('.form-group').classList.add('error');
+                isValid = false;
+            }
+            
+            if (isValid) {
+                const submitBtn = document.getElementById('interestSubmitBtn');
+                const submitText = document.getElementById('interestSubmitText');
+                const loading = document.getElementById('interestLoading');
+                const successMessage = document.getElementById('interestSuccessMessage');
+                
+                // Show loading state
+                submitBtn.disabled = true;
+                submitText.textContent = 'Processing...';
+                loading.style.display = 'inline-block';
+                
+                // Submit form
+                this.submit();
+            }
+        });
+        
+        // Plan Form Validation
+        document.getElementById('planForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Reset previous errors
+            document.querySelectorAll('#planForm .form-group').forEach(group => {
+                group.classList.remove('error');
+            });
+            
+            // Validate form
+            let isValid = true;
+            const requiredFields = ['planName', 'planEmail', 'planPhone', 'planDescription'];
+            
+            requiredFields.forEach(fieldId => {
+                const field = document.getElementById(fieldId);
+                if (!field.value.trim()) {
+                    field.closest('.form-group').classList.add('error');
+                    isValid = false;
+                }
+            });
+            
+            // Validate email format
+            const emailField = document.getElementById('planEmail');
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (emailField.value && !emailRegex.test(emailField.value)) {
+                emailField.closest('.form-group').classList.add('error');
+                isValid = false;
+            }
+            
+            if (isValid) {
+                const submitBtn = document.getElementById('planSubmitBtn');
+                const submitText = document.getElementById('planSubmitText');
+                const loading = document.getElementById('planLoading');
+                const successMessage = document.getElementById('planSuccessMessage');
+                
+                // Show loading state
+                submitBtn.disabled = true;
+                submitText.textContent = 'Processing...';
+                loading.style.display = 'inline-block';
+                
+                // Submit form
+                this.submit();
+            }
+        });
+        
+        // Project Form Validation
+        document.getElementById('websiteForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Reset previous errors
+            document.querySelectorAll('.form-group').forEach(group => {
+                group.classList.remove('error');
+            });
+            
+            // Validate form
+            let isValid = true;
+            const requiredFields = ['firstName', 'lastName', 'email', 'websiteType', 'budget', 'description'];
+            
+            requiredFields.forEach(fieldId => {
+                const field = document.getElementById(fieldId);
+                if (!field.value.trim()) {
+                    field.closest('.form-group').classList.add('error');
+                    isValid = false;
+                }
+            });
+            
+            // Validate email format
+            const emailField = document.getElementById('email');
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (emailField.value && !emailRegex.test(emailField.value)) {
+                emailField.closest('.form-group').classList.add('error');
+                isValid = false;
+            }
+            
+            if (isValid) {
+                const submitBtn = document.getElementById('submitBtn');
+                const submitText = document.getElementById('submitText');
+                const loading = document.getElementById('loading');
+                
+                // Show loading state
+                submitBtn.disabled = true;
+                submitText.textContent = 'Processing...';
+                loading.style.display = 'inline-block';
+                
+                // Submit form
+                this.submit();
+            }
+        });
+        
+        // Remove error state on input
+        document.querySelectorAll('.form-control').forEach(input => {
+            input.addEventListener('input', function() {
+                this.closest('.form-group').classList.remove('error');
+            });
         });
         
         // Smooth scrolling for navigation links
@@ -1199,7 +1944,7 @@
                 const targetElement = document.querySelector(targetId);
                 if (targetElement) {
                     const headerHeight = document.getElementById('header').offsetHeight;
-                    const targetPosition = targetElement.offsetTop - headerHeight - 15;
+                    const targetPosition = targetElement.offsetTop - headerHeight - 10;
                     
                     window.scrollTo({
                         top: targetPosition,
@@ -1220,13 +1965,13 @@
                 if (entry.isIntersecting) {
                     setTimeout(() => {
                         entry.target.classList.add('visible');
-                    }, index * 80);
+                    }, index * 100);
                 }
             });
         }, observerOptions);
         
         // Observe elements with staggered animation
-        document.querySelectorAll('.section-title, .form-section, .feature-card, .stat-item').forEach(el => {
+        document.querySelectorAll('.section-title, .form-section, .feature-card, .stat-item, .process-item, .plan-card').forEach(el => {
             observer.observe(el);
         });
         
