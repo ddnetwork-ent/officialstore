@@ -129,25 +129,33 @@
             100% { width: 100%; }
         }
         
+        /* Floating Action Buttons Container */
+        .floating-buttons {
+            position: fixed;
+            right: 20px;
+            bottom: 20px;
+            display: flex;
+            flex-direction: column-reverse;
+            gap: 12px;
+            z-index: 997;
+            align-items: flex-end;
+        }
+        
         /* Back to Top Button */
         .back-to-top {
-            position: fixed;
-            bottom: 90px;
-            right: 20px;
-            width: 45px;
-            height: 45px;
+            width: 50px;
+            height: 50px;
             background-color: var(--primary-white);
             color: var(--primary-black);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1rem;
+            font-size: 1.1rem;
             cursor: pointer;
             opacity: 0;
             visibility: hidden;
             transition: all 0.3s var(--smooth-transition);
-            z-index: 998;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
             border: 1px solid rgba(0, 0, 0, 0.05);
         }
@@ -161,6 +169,37 @@
             background-color: var(--primary-black);
             color: var(--primary-white);
             transform: translateY(-3px);
+        }
+        
+        /* Customer Service WhatsApp Button */
+        .customer-service-btn {
+            width: 55px;
+            height: 55px;
+            background-color: #25D366;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s var(--smooth-transition);
+            text-decoration: none;
+        }
+        
+        .customer-service-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+        }
+        
+        /* Tidio Chat Override */
+        #tidio-chat {
+            bottom: 20px !important;
+            right: 20px !important;
+        }
+        
+        .tidio-chat-widget {
+            margin-bottom: 70px !important;
         }
         
         /* Header Styles */
@@ -1137,31 +1176,6 @@
             line-height: 1.6;
         }
         
-        /* Customer Service Button */
-        .customer-service-btn {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            width: 56px;
-            height: 56px;
-            background-color: #25D366;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 24px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            z-index: 999;
-            transition: all 0.3s var(--smooth-transition);
-            text-decoration: none;
-        }
-        
-        .customer-service-btn:hover {
-            transform: scale(1.05);
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
-        }
-        
         /* Tablet Styles */
         @media (min-width: 768px) {
             .hero-buttons {
@@ -1195,6 +1209,25 @@
             
             .container {
                 padding: 0 30px;
+            }
+            
+            /* Floating buttons adjustments for tablet */
+            .floating-buttons {
+                right: 30px;
+                bottom: 30px;
+                gap: 15px;
+            }
+            
+            .back-to-top {
+                width: 55px;
+                height: 55px;
+                font-size: 1.2rem;
+            }
+            
+            .customer-service-btn {
+                width: 60px;
+                height: 60px;
+                font-size: 26px;
             }
         }
         
@@ -1262,6 +1295,25 @@
             .stat-number {
                 font-size: 3rem;
             }
+            
+            /* Floating buttons adjustments for desktop */
+            .floating-buttons {
+                right: 40px;
+                bottom: 40px;
+                gap: 18px;
+            }
+            
+            .back-to-top {
+                width: 60px;
+                height: 60px;
+                font-size: 1.3rem;
+            }
+            
+            .customer-service-btn {
+                width: 65px;
+                height: 65px;
+                font-size: 28px;
+            }
         }
         
         /* Large Desktop Styles */
@@ -1286,6 +1338,27 @@
                 max-width: 800px;
             }
         }
+        
+        /* Mobile adjustments for floating buttons */
+        @media (max-width: 767px) {
+            .floating-buttons {
+                right: 15px;
+                bottom: 15px;
+                gap: 10px;
+            }
+            
+            .back-to-top {
+                width: 45px;
+                height: 45px;
+                font-size: 1rem;
+            }
+            
+            .customer-service-btn {
+                width: 50px;
+                height: 50px;
+                font-size: 22px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -1297,9 +1370,17 @@
         </div>
     </div>
     
-    <!-- Back to Top Button -->
-    <div class="back-to-top" id="backToTop">
-        <i class="fas fa-arrow-up"></i>
+    <!-- Floating Action Buttons Container -->
+    <div class="floating-buttons">
+        <!-- Customer Service WhatsApp Button -->
+        <a href="https://wa.me/60122600969" class="customer-service-btn" target="_blank">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+        
+        <!-- Back to Top Button -->
+        <div class="back-to-top" id="backToTop">
+            <i class="fas fa-arrow-up"></i>
+        </div>
     </div>
     
     <header id="header">
@@ -1324,11 +1405,6 @@
             </div>
         </div>
     </header>
-    
-    <!-- Customer Service WhatsApp Button -->
-    <a href="https://wa.me/60122600969" class="customer-service-btn" target="_blank">
-        <i class="fab fa-whatsapp"></i>
-    </a>
     
     <section class="hero" id="home">
         <div class="hero-content">
@@ -1837,6 +1913,9 @@
         </div>
     </footer>
     
+    <!-- Tidio Chat Script -->
+    <script src="//code.tidio.co/0z8jessx414i4qkufsf04fhxczsf5aqf.js" async></script>
+    
     <script>
         // Loading Screen
         window.addEventListener('load', function() {
@@ -2145,6 +2224,25 @@
         if (statsSection) {
             statsObserver.observe(statsSection);
         }
+        
+        // Tidio Chat Position Adjustment
+        document.addEventListener('DOMContentLoaded', function() {
+            // Wait for Tidio to load
+            setTimeout(function() {
+                // Find and adjust Tidio chat widget position
+                const tidioChat = document.querySelector('#tidio-chat');
+                if (tidioChat) {
+                    // Add margin to create space for our buttons
+                    tidioChat.style.setProperty('margin-bottom', '140px', 'important');
+                }
+                
+                // Alternative approach for Tidio iframe
+                const tidioIframe = document.querySelector('iframe[src*="tidio"]');
+                if (tidioIframe) {
+                    tidioIframe.style.setProperty('bottom', '140px', 'important');
+                }
+            }, 3000); // Give Tidio time to load
+        });
     </script>
 </body>
 </html>
