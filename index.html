@@ -508,7 +508,7 @@
         
         .plans-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 32px;
         }
         
@@ -524,6 +524,9 @@
             border: 1px solid rgba(0, 0, 0, 0.05);
             position: relative;
             overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
         }
         
         .plan-card.featured {
@@ -558,6 +561,10 @@
             transform: scale(1.05) translateY(-5px);
         }
         
+        .plan-header {
+            margin-bottom: 24px;
+        }
+        
         .plan-name {
             font-size: 1.3rem;
             font-weight: 700;
@@ -582,12 +589,14 @@
             color: var(--text-light);
             margin-bottom: 24px;
             line-height: 1.6;
+            font-size: 0.9rem;
         }
         
         .plan-features {
             list-style: none;
             margin-bottom: 32px;
             text-align: left;
+            flex-grow: 1;
         }
         
         .plan-features li {
@@ -596,6 +605,7 @@
             border-bottom: 1px solid rgba(0, 0, 0, 0.05);
             display: flex;
             align-items: center;
+            font-size: 0.9rem;
         }
         
         .plan-features li:last-child {
@@ -606,6 +616,7 @@
             color: var(--accent-red);
             margin-right: 12px;
             font-size: 0.9rem;
+            width: 16px;
         }
         
         .plan-features li.no {
@@ -629,6 +640,7 @@
             transition: all 0.3s var(--smooth-transition);
             text-transform: uppercase;
             letter-spacing: 0.5px;
+            margin-top: auto;
         }
         
         .plan-btn:hover {
@@ -1521,7 +1533,7 @@
                 <div class="plan-selection">
                     <h4>Selected Plan</h4>
                     <div class="plan-details">
-                        <div class="plan-name-display" id="planNameDisplay">Budget Plan</div>
+                        <div class="plan-name-display" id="planNameDisplay">HTML-Only Plan</div>
                         <div class="plan-price-display" id="planPriceDisplay">RM59/month</div>
                     </div>
                     
@@ -1529,7 +1541,7 @@
                         <div class="billing-option active" id="monthlyBilling">Monthly</div>
                         <div class="billing-option" id="yearlyBilling">Yearly</div>
                     </div>
-                    <div class="billing-savings" id="billingSavings">Save RM359 with yearly billing</div>
+                    <div class="billing-savings" id="billingSavings">Save RM459 with yearly billing</div>
                 </div>
                 
                 <div class="form-group">
@@ -1606,11 +1618,37 @@
             
             <section class="plans-section">
                 <div class="plans-grid">
+                    <!-- HTML-Only Plan -->
                     <div class="plan-card">
-                        <h3 class="plan-name">🟩 Budget Plan</h3>
-                        <div class="plan-price">RM59<span>/month</span></div>
-                        <p class="plan-description">RM349/year (save RM359)</p>
-                        <p class="plan-description">Best for individuals or small shops starting online</p>
+                        <div class="plan-header">
+                            <h3 class="plan-name">🟨 HTML-Only Plan</h3>
+                            <div class="plan-price">RM59<span>/month</span></div>
+                            <p class="plan-description">RM249/year (save RM459)</p>
+                            <p class="plan-description">For those who only need a simple HTML website — no system, no CMS, no backend.</p>
+                        </div>
+                        <ul class="plan-features">
+                            <li><i class="fas fa-check"></i> 1 Static HTML Page (Custom-made)</li>
+                            <li><i class="fas fa-check"></i> Mobile Responsive</li>
+                            <li><i class="fas fa-check"></i> SSL Security</li>
+                            <li><i class="fas fa-check"></i> Hosting under DD Network</li>
+                            <li><i class="fas fa-check"></i> Free Subdomain (yourname.ddnetwork.uk)</li>
+                            <li class="no"><i class="fas fa-times"></i> Own Domain (.com/.my/.co) - Add-on</li>
+                            <li class="no"><i class="fas fa-times"></i> Chatbot / System (website only)</li>
+                            <li><i class="fas fa-check"></i> 1 update per year</li>
+                            <li><i class="fas fa-check"></i> Basic Support</li>
+                            <li><i class="fas fa-check"></i> Renewal: RM249/year</li>
+                        </ul>
+                        <button class="plan-btn" data-plan="HTML-Only Plan" data-monthly="RM59" data-yearly="RM249" data-savings="Save RM459">Choose Plan</button>
+                    </div>
+                    
+                    <!-- Budget Plan -->
+                    <div class="plan-card">
+                        <div class="plan-header">
+                            <h3 class="plan-name">🟩 Budget Plan</h3>
+                            <div class="plan-price">RM59<span>/month</span></div>
+                            <p class="plan-description">RM349/year (save RM359)</p>
+                            <p class="plan-description">Best for individuals or small shops starting online</p>
+                        </div>
                         <ul class="plan-features">
                             <li><i class="fas fa-check"></i> 2 Pages (Home + Contact)</li>
                             <li><i class="fas fa-check"></i> Custom Basic Design</li>
@@ -1633,11 +1671,14 @@
                         <button class="plan-btn" data-plan="Budget Plan" data-monthly="RM59" data-yearly="RM349" data-savings="Save RM359">Choose Plan</button>
                     </div>
                     
+                    <!-- Starter Plan -->
                     <div class="plan-card featured">
-                        <h3 class="plan-name">🟦 Starter Plan</h3>
-                        <div class="plan-price">RM89<span>/month</span></div>
-                        <p class="plan-description">RM599/year (save RM469)</p>
-                        <p class="plan-description">Perfect for small businesses that want more flexibility</p>
+                        <div class="plan-header">
+                            <h3 class="plan-name">🟦 Starter Plan</h3>
+                            <div class="plan-price">RM89<span>/month</span></div>
+                            <p class="plan-description">RM599/year (save RM469)</p>
+                            <p class="plan-description">Perfect for small businesses that want more flexibility</p>
+                        </div>
                         <ul class="plan-features">
                             <li><i class="fas fa-check"></i> 4 Pages</li>
                             <li><i class="fas fa-check"></i> Custom Standard Design</li>
@@ -1660,11 +1701,14 @@
                         <button class="plan-btn" data-plan="Starter Plan" data-monthly="RM89" data-yearly="RM599" data-savings="Save RM469">Choose Plan</button>
                     </div>
                     
+                    <!-- Business Plan -->
                     <div class="plan-card">
-                        <h3 class="plan-name">🟧 Business Plan</h3>
-                        <div class="plan-price">RM149<span>/month</span></div>
-                        <p class="plan-description">RM999/year (save RM789)</p>
-                        <p class="plan-description">For serious businesses that want a full online presence + automation</p>
+                        <div class="plan-header">
+                            <h3 class="plan-name">🟧 Business Plan</h3>
+                            <div class="plan-price">RM149<span>/month</span></div>
+                            <p class="plan-description">RM999/year (save RM789)</p>
+                            <p class="plan-description">For serious businesses that want a full online presence + automation</p>
+                        </div>
                         <ul class="plan-features">
                             <li><i class="fas fa-check"></i> 6 Pages (Home, About, Services, Contact, etc.)</li>
                             <li><i class="fas fa-check"></i> Custom Professional Design</li>
