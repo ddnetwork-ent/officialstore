@@ -171,27 +171,6 @@
             transform: translateY(-3px);
         }
         
-        /* Customer Service WhatsApp Button */
-        .customer-service-btn {
-            width: 55px;
-            height: 55px;
-            background-color: #25D366;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 24px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s var(--smooth-transition);
-            text-decoration: none;
-        }
-        
-        .customer-service-btn:hover {
-            transform: scale(1.05);
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
-        }
-        
         /* Tidio Chat Override */
         #tidio-chat {
             bottom: 20px !important;
@@ -1176,6 +1155,70 @@
             line-height: 1.6;
         }
         
+        /* Plan Selection Styles */
+        .plan-selection {
+            background-color: var(--light-gray);
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 24px;
+        }
+        
+        .plan-selection h4 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 16px;
+            color: var(--primary-black);
+        }
+        
+        .plan-details {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 16px;
+        }
+        
+        .plan-name-display {
+            font-weight: 600;
+            color: var(--primary-black);
+        }
+        
+        .plan-price-display {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--accent-red);
+        }
+        
+        .billing-toggle {
+            display: flex;
+            background-color: var(--primary-white);
+            border-radius: 8px;
+            padding: 4px;
+            margin-bottom: 16px;
+        }
+        
+        .billing-option {
+            flex: 1;
+            padding: 8px 16px;
+            text-align: center;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s var(--smooth-transition);
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+        
+        .billing-option.active {
+            background-color: var(--primary-black);
+            color: var(--primary-white);
+        }
+        
+        .billing-savings {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            text-align: center;
+            margin-top: 8px;
+        }
+        
         /* Tablet Styles */
         @media (min-width: 768px) {
             .hero-buttons {
@@ -1222,12 +1265,6 @@
                 width: 55px;
                 height: 55px;
                 font-size: 1.2rem;
-            }
-            
-            .customer-service-btn {
-                width: 60px;
-                height: 60px;
-                font-size: 26px;
             }
         }
         
@@ -1308,12 +1345,6 @@
                 height: 60px;
                 font-size: 1.3rem;
             }
-            
-            .customer-service-btn {
-                width: 65px;
-                height: 65px;
-                font-size: 28px;
-            }
         }
         
         /* Large Desktop Styles */
@@ -1352,12 +1383,6 @@
                 height: 45px;
                 font-size: 1rem;
             }
-            
-            .customer-service-btn {
-                width: 50px;
-                height: 50px;
-                font-size: 22px;
-            }
         }
     </style>
 </head>
@@ -1372,11 +1397,6 @@
     
     <!-- Floating Action Buttons Container -->
     <div class="floating-buttons">
-        <!-- Customer Service WhatsApp Button -->
-        <a href="https://wa.me/60122600969" class="customer-service-btn" target="_blank">
-            <i class="fab fa-whatsapp"></i>
-        </a>
-        
         <!-- Back to Top Button -->
         <div class="back-to-top" id="backToTop">
             <i class="fas fa-arrow-up"></i>
@@ -1426,7 +1446,7 @@
             <p class="modal-description">Join our exclusive community and be the first to know about our latest projects, special offers, and digital innovation insights.</p>
             
             <div class="success-message" id="interestSuccessMessage">
-                <i class="fas fa-check-circle"></i> Thank you for your interest! We'll be in touch soon.
+                <i class="fas fa-check-circle"></i> Thank you for choosing us! Our team will contact you shortly. If you don't hear from us, please reach out at works@ddnetwork.uk
             </div>
             
             <form id="interestForm" action="https://formsubmit.co/ddbusiness.co@outlook.com" method="POST" novalidate>
@@ -1486,7 +1506,7 @@
             <p class="modal-description">Fill in your details to get started with your selected plan.</p>
             
             <div class="success-message" id="planSuccessMessage">
-                <i class="fas fa-check-circle"></i> Thank you! Your order has been received. We'll contact you soon.
+                <i class="fas fa-check-circle"></i> Thank you for choosing us! Our team will contact you shortly. If you don't hear from us, please reach out at works@ddnetwork.uk
             </div>
             
             <form id="planForm" action="https://formsubmit.co/ddbusiness.co@outlook.com" method="POST" novalidate>
@@ -1495,6 +1515,22 @@
                 <input type="hidden" name="_subject" value="New Plan Order from DD Network Ent.">
                 <input type="hidden" name="_template" value="table">
                 <input type="hidden" id="selectedPlan" name="plan" value="">
+                <input type="hidden" id="selectedBilling" name="billing" value="">
+                <input type="hidden" id="selectedPrice" name="price" value="">
+                
+                <div class="plan-selection">
+                    <h4>Selected Plan</h4>
+                    <div class="plan-details">
+                        <div class="plan-name-display" id="planNameDisplay">Budget Plan</div>
+                        <div class="plan-price-display" id="planPriceDisplay">RM59/month</div>
+                    </div>
+                    
+                    <div class="billing-toggle">
+                        <div class="billing-option active" id="monthlyBilling">Monthly</div>
+                        <div class="billing-option" id="yearlyBilling">Yearly</div>
+                    </div>
+                    <div class="billing-savings" id="billingSavings">Save RM359 with yearly billing</div>
+                </div>
                 
                 <div class="form-group">
                     <label for="planName">Full Name <span class="required">*</span></label>
@@ -1572,71 +1608,84 @@
                 <div class="plans-grid">
                     <div class="plan-card">
                         <h3 class="plan-name">🟩 Budget Plan</h3>
-                        <div class="plan-price">RM120<span>/year</span></div>
-                        <p class="plan-description">Under DD Network Subdomain - Example: brandname.ddnetwork.uk</p>
+                        <div class="plan-price">RM59<span>/month</span></div>
+                        <p class="plan-description">RM349/year (save RM359)</p>
+                        <p class="plan-description">Best for individuals or small shops starting online</p>
                         <ul class="plan-features">
-                            <li><i class="fas fa-check"></i> 1 page only</li>
-                            <li><i class="fas fa-check"></i> HTML Website (No CMS)</li>
-                            <li><i class="fas fa-check"></i> Custom Design</li>
-                            <li><i class="fas fa-check"></i> Contact Form</li>
+                            <li><i class="fas fa-check"></i> 2 Pages (Home + Contact)</li>
+                            <li><i class="fas fa-check"></i> Custom Basic Design</li>
                             <li><i class="fas fa-check"></i> Mobile Responsive</li>
+                            <li><i class="fas fa-check"></i> Contact Form</li>
                             <li><i class="fas fa-check"></i> SSL Security</li>
-                            <li><i class="fas fa-check"></i> Hosting Under DD Network</li>
-                            <li class="no"><i class="fas fa-times"></i> Domain (Own Domain)</li>
-                            <li><i class="fas fa-check"></i> Free Subdomain (*.ddnetwork.uk)</li>
+                            <li><i class="fas fa-check"></i> Hosting under DD Network</li>
+                            <li><i class="fas fa-check"></i> Free ddnetwork.uk Subdomain</li>
+                            <li class="no"><i class="fas fa-times"></i> Own Domain (.com/.my/.co) - Add-on</li>
+                            <li><i class="fas fa-check"></i> Chat Bot Customer Support (Basic)</li>
+                            <li><i class="fas fa-check"></i> Auto reply</li>
+                            <li><i class="fas fa-check"></i> FAQ replies</li>
+                            <li><i class="fas fa-check"></i> Limited training data</li>
                             <li><i class="fas fa-check"></i> Basic Support</li>
                             <li><i class="fas fa-check"></i> Website Monitoring</li>
-                            <li class="no"><i class="fas fa-times"></i> Basic SEO</li>
-                            <li class="no"><i class="fas fa-times"></i> Extra Features (Gallery/Blog/Booking)</li>
-                            <li><i class="fas fa-check"></i> Renewables: /year</li>
+                            <li><i class="fas fa-check"></i> Basic SEO</li>
+                            <li class="no"><i class="fas fa-times"></i> Extra Features - Add-on</li>
+                            <li><i class="fas fa-check"></i> Renewal: RM349/year</li>
                         </ul>
-                        <button class="plan-btn" data-plan="Budget Plan - RM120/year">Choose Plan</button>
+                        <button class="plan-btn" data-plan="Budget Plan" data-monthly="RM59" data-yearly="RM349" data-savings="Save RM359">Choose Plan</button>
                     </div>
                     
                     <div class="plan-card featured">
                         <h3 class="plan-name">🟦 Starter Plan</h3>
-                        <div class="plan-price">RM299-499<span>/one-time</span></div>
-                        <p class="plan-description">Use Own Domain - Price depends on design & number of pages</p>
+                        <div class="plan-price">RM89<span>/month</span></div>
+                        <p class="plan-description">RM599/year (save RM469)</p>
+                        <p class="plan-description">Perfect for small businesses that want more flexibility</p>
                         <ul class="plan-features">
-                            <li><i class="fas fa-check"></i> 1 page only</li>
-                            <li><i class="fas fa-check"></i> HTML Website (No CMS)</li>
-                            <li><i class="fas fa-check"></i> Custom Design (Basic only)</li>
-                            <li><i class="fas fa-check"></i> Contact Form</li>
+                            <li><i class="fas fa-check"></i> 4 Pages</li>
+                            <li><i class="fas fa-check"></i> Custom Standard Design</li>
                             <li><i class="fas fa-check"></i> Mobile Responsive</li>
+                            <li><i class="fas fa-check"></i> Contact Form</li>
                             <li><i class="fas fa-check"></i> SSL Security</li>
-                            <li><i class="fas fa-check"></i> Hosting Under DD Network</li>
-                            <li><i class="fas fa-check"></i> Domain (Optional)</li>
-                            <li><i class="fas fa-check"></i> Free Subdomain (*.ddnetwork.uk)</li>
-                            <li><i class="fas fa-check"></i> Support: 1 month</li>
+                            <li><i class="fas fa-check"></i> Hosting under DD Network</li>
+                            <li><i class="fas fa-check"></i> Free Domain (.ddnetwork.uk or normal domain)</li>
+                            <li><i class="fas fa-check"></i> Chat Bot Customer Support (Standard)</li>
+                            <li><i class="fas fa-check"></i> Auto reply</li>
+                            <li><i class="fas fa-check"></i> FAQ</li>
+                            <li><i class="fas fa-check"></i> Product details training</li>
+                            <li><i class="fas fa-check"></i> Button replies</li>
+                            <li><i class="fas fa-check"></i> Support: 1 Month</li>
                             <li><i class="fas fa-check"></i> Website Monitoring</li>
                             <li><i class="fas fa-check"></i> Basic SEO</li>
-                            <li class="no"><i class="fas fa-times"></i> Extra Features (Gallery/Blog/Booking)</li>
-                            <li class="no"><i class="fas fa-times"></i> Renewables</li>
+                            <li class="no"><i class="fas fa-times"></i> Extra Features - Add-on</li>
+                            <li><i class="fas fa-check"></i> Renewal: RM599/year</li>
                         </ul>
-                        <button class="plan-btn" data-plan="Starter Plan - RM299-499">Choose Plan</button>
+                        <button class="plan-btn" data-plan="Starter Plan" data-monthly="RM89" data-yearly="RM599" data-savings="Save RM469">Choose Plan</button>
                     </div>
                     
                     <div class="plan-card">
                         <h3 class="plan-name">🟧 Business Plan</h3>
-                        <div class="plan-price">RM699-999<span>/one-time</span></div>
-                        <p class="plan-description">Still Affordable - Professional solution for growing businesses</p>
+                        <div class="plan-price">RM149<span>/month</span></div>
+                        <p class="plan-description">RM999/year (save RM789)</p>
+                        <p class="plan-description">For serious businesses that want a full online presence + automation</p>
                         <ul class="plan-features">
-                            <li><i class="fas fa-check"></i> 1 page only</li>
-                            <li><i class="fas fa-check"></i> HTML Website (No CMS)</li>
-                            <li><i class="fas fa-check"></i> Custom Design</li>
-                            <li><i class="fas fa-check"></i> Contact Form</li>
+                            <li><i class="fas fa-check"></i> 6 Pages (Home, About, Services, Contact, etc.)</li>
+                            <li><i class="fas fa-check"></i> Custom Professional Design</li>
                             <li><i class="fas fa-check"></i> Mobile Responsive</li>
+                            <li><i class="fas fa-check"></i> Contact Form</li>
                             <li><i class="fas fa-check"></i> SSL Security</li>
-                            <li><i class="fas fa-check"></i> Hosting Under DD Network</li>
-                            <li><i class="fas fa-check"></i> Domain (Optional)</li>
-                            <li><i class="fas fa-check"></i> Free Subdomain (*.ddnetwork.uk)</li>
-                            <li><i class="fas fa-check"></i> Support: 2 months</li>
+                            <li><i class="fas fa-check"></i> Hosting under DD Network</li>
+                            <li><i class="fas fa-check"></i> Free Domain (.ddnetwork.uk or normal domain)</li>
+                            <li><i class="fas fa-check"></i> Chat Bot Customer Support (Pro Version)</li>
+                            <li><i class="fas fa-check"></i> Fully trained AI</li>
+                            <li><i class="fas fa-check"></i> Unlimited training data (FAQ + product + pricing)</li>
+                            <li><i class="fas fa-check"></i> Smart intent detection</li>
+                            <li><i class="fas fa-check"></i> Custom welcome message</li>
+                            <li><i class="fas fa-check"></i> Lead collection form</li>
+                            <li><i class="fas fa-check"></i> Support: 2 Months</li>
                             <li><i class="fas fa-check"></i> Website Monitoring</li>
                             <li><i class="fas fa-check"></i> Basic SEO</li>
-                            <li><i class="fas fa-check"></i> Extra Features (Gallery/Blog/Booking)</li>
-                            <li class="no"><i class="fas fa-times"></i> Renewables</li>
+                            <li><i class="fas fa-check"></i> Extra Features (Gallery / Booking / Blog) - Included</li>
+                            <li><i class="fas fa-check"></i> Renewal: RM999/year</li>
                         </ul>
-                        <button class="plan-btn" data-plan="Business Plan - RM699-999">Choose Plan</button>
+                        <button class="plan-btn" data-plan="Business Plan" data-monthly="RM149" data-yearly="RM999" data-savings="Save RM789">Choose Plan</button>
                     </div>
                 </div>
                 
@@ -1647,12 +1696,12 @@
                 
                 <div class="add-ons">
                     <div class="add-on-card">
-                        <h3>Extra Page</h3>
-                        <p>RM50–RM70 / page</p>
+                        <h3>Own Domain (.com/.my/.co)</h3>
+                        <p>Add-on Available</p>
                     </div>
                     <div class="add-on-card">
-                        <h3>Monthly Maintenance</h3>
-                        <p>RM10–RM20 / month</p>
+                        <h3>Extra Features</h3>
+                        <p>Add-on Available</p>
                     </div>
                 </div>
             </section>
@@ -1756,7 +1805,7 @@
             
             <div class="form-section" id="contact">
                 <div class="success-message" id="successMessage">
-                    <i class="fas fa-check-circle"></i> Thank you! Your project details have been sent. We will contact you soon.
+                    <i class="fas fa-check-circle"></i> Thank you for choosing us! Our team will contact you shortly. If you don't hear from us, please reach out at works@ddnetwork.uk
                 </div>
                 
                 <form id="websiteForm" action="https://formsubmit.co/ddbusiness.co@outlook.com" method="POST" novalidate>
@@ -1764,7 +1813,6 @@
                     <input type="hidden" name="_captcha" value="false">
                     <input type="hidden" name="_subject" value="New Website Project Inquiry from DD Network Ent.">
                     <input type="hidden" name="_template" value="table">
-                    <input type="hidden" name="_next" value="https://store.ddnetwork.uk">
                     
                     <div class="form-intro">
                         <h3>Project Inquiry</h3>
@@ -1917,6 +1965,10 @@
     <script src="//code.tidio.co/h5baquuiat69z0ydtfpkvfolyfmkbhh7.js" async></script>
     
     <script>
+        // Global variables to track modal states
+        let planModalShown = false;
+        let interestModalShown = false;
+        
         // Loading Screen
         window.addEventListener('load', function() {
             setTimeout(function() {
@@ -1979,30 +2031,95 @@
         openInterestModalBtn.addEventListener('click', function() {
             interestModal.classList.add('show');
             document.body.style.overflow = 'hidden';
+            interestModalShown = true;
         });
         
         closeInterestModalBtn.addEventListener('click', function() {
             interestModal.classList.remove('show');
             document.body.style.overflow = 'auto';
+            interestModalShown = false;
         });
         
         // Plan Modal
         const planModal = document.getElementById('planModal');
         const closePlanModalBtn = document.getElementById('closePlanModal');
         const selectedPlanInput = document.getElementById('selectedPlan');
+        const selectedBillingInput = document.getElementById('selectedBilling');
+        const selectedPriceInput = document.getElementById('selectedPrice');
+        const planNameDisplay = document.getElementById('planNameDisplay');
+        const planPriceDisplay = document.getElementById('planPriceDisplay');
+        const billingSavings = document.getElementById('billingSavings');
+        
+        // Store current plan data
+        let currentPlanData = {
+            name: '',
+            monthly: '',
+            yearly: '',
+            savings: ''
+        };
         
         closePlanModalBtn.addEventListener('click', function() {
             planModal.classList.remove('show');
             document.body.style.overflow = 'auto';
+            planModalShown = false;
         });
+        
+        // Billing toggle functionality
+        const monthlyBilling = document.getElementById('monthlyBilling');
+        const yearlyBilling = document.getElementById('yearlyBilling');
+        
+        monthlyBilling.addEventListener('click', function() {
+            monthlyBilling.classList.add('active');
+            yearlyBilling.classList.remove('active');
+            updatePlanDisplay('monthly');
+        });
+        
+        yearlyBilling.addEventListener('click', function() {
+            yearlyBilling.classList.add('active');
+            monthlyBilling.classList.remove('active');
+            updatePlanDisplay('yearly');
+        });
+        
+        function updatePlanDisplay(billingType) {
+            if (currentPlanData.name) {
+                if (billingType === 'monthly') {
+                    planPriceDisplay.textContent = currentPlanData.monthly + '/month';
+                    billingSavings.textContent = currentPlanData.savings + ' with yearly billing';
+                    selectedBillingInput.value = 'Monthly';
+                    selectedPriceInput.value = currentPlanData.monthly;
+                } else {
+                    planPriceDisplay.textContent = currentPlanData.yearly + '/year';
+                    billingSavings.textContent = currentPlanData.savings;
+                    selectedBillingInput.value = 'Yearly';
+                    selectedPriceInput.value = currentPlanData.yearly;
+                }
+            }
+        }
         
         // Plan selection buttons
         document.querySelectorAll('.plan-btn').forEach(button => {
             button.addEventListener('click', function() {
-                const planName = this.getAttribute('data-plan');
-                selectedPlanInput.value = planName;
+                // Get plan data from button attributes
+                currentPlanData = {
+                    name: this.getAttribute('data-plan'),
+                    monthly: this.getAttribute('data-monthly'),
+                    yearly: this.getAttribute('data-yearly'),
+                    savings: this.getAttribute('data-savings')
+                };
+                
+                // Update modal with plan data
+                planNameDisplay.textContent = currentPlanData.name;
+                selectedPlanInput.value = currentPlanData.name;
+                
+                // Set default to monthly
+                monthlyBilling.classList.add('active');
+                yearlyBilling.classList.remove('active');
+                updatePlanDisplay('monthly');
+                
+                // Show modal
                 planModal.classList.add('show');
                 document.body.style.overflow = 'hidden';
+                planModalShown = true;
             });
         });
         
@@ -2011,10 +2128,12 @@
             if (event.target === interestModal) {
                 interestModal.classList.remove('show');
                 document.body.style.overflow = 'auto';
+                interestModalShown = false;
             }
             if (event.target === planModal) {
                 planModal.classList.remove('show');
                 document.body.style.overflow = 'auto';
+                planModalShown = false;
             }
         });
         
@@ -2058,8 +2177,41 @@
                 submitText.textContent = 'Processing...';
                 loading.style.display = 'inline-block';
                 
-                // Submit form
-                this.submit();
+                // Submit form using fetch to prevent default redirect
+                const formData = new FormData(this);
+                
+                fetch(this.action, {
+                    method: 'POST',
+                    body: formData
+                })
+                .then(response => {
+                    // Show success message
+                    successMessage.style.display = 'block';
+                    
+                    // Hide loading state
+                    submitBtn.disabled = false;
+                    submitText.textContent = 'Submit Interest';
+                    loading.style.display = 'none';
+                    
+                    // Reset form
+                    this.reset();
+                    
+                    // Auto-hide success message after 5 seconds
+                    setTimeout(() => {
+                        successMessage.style.display = 'none';
+                        interestModal.classList.remove('show');
+                        document.body.style.overflow = 'auto';
+                        interestModalShown = false;
+                    }, 5000);
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    
+                    // Hide loading state
+                    submitBtn.disabled = false;
+                    submitText.textContent = 'Submit Interest';
+                    loading.style.display = 'none';
+                });
             }
         });
         
@@ -2103,8 +2255,41 @@
                 submitText.textContent = 'Processing...';
                 loading.style.display = 'inline-block';
                 
-                // Submit form
-                this.submit();
+                // Submit form using fetch to prevent default redirect
+                const formData = new FormData(this);
+                
+                fetch(this.action, {
+                    method: 'POST',
+                    body: formData
+                })
+                .then(response => {
+                    // Show success message
+                    successMessage.style.display = 'block';
+                    
+                    // Hide loading state
+                    submitBtn.disabled = false;
+                    submitText.textContent = 'Submit Order';
+                    loading.style.display = 'none';
+                    
+                    // Reset form
+                    this.reset();
+                    
+                    // Auto-hide success message after 5 seconds
+                    setTimeout(() => {
+                        successMessage.style.display = 'none';
+                        planModal.classList.remove('show');
+                        document.body.style.overflow = 'auto';
+                        planModalShown = false;
+                    }, 5000);
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    
+                    // Hide loading state
+                    submitBtn.disabled = false;
+                    submitText.textContent = 'Submit Order';
+                    loading.style.display = 'none';
+                });
             }
         });
         
@@ -2141,14 +2326,45 @@
                 const submitBtn = document.getElementById('submitBtn');
                 const submitText = document.getElementById('submitText');
                 const loading = document.getElementById('loading');
+                const successMessage = document.getElementById('successMessage');
                 
                 // Show loading state
                 submitBtn.disabled = true;
                 submitText.textContent = 'Processing...';
                 loading.style.display = 'inline-block';
                 
-                // Submit form
-                this.submit();
+                // Submit form using fetch to prevent default redirect
+                const formData = new FormData(this);
+                
+                fetch(this.action, {
+                    method: 'POST',
+                    body: formData
+                })
+                .then(response => {
+                    // Show success message
+                    successMessage.style.display = 'block';
+                    
+                    // Hide loading state
+                    submitBtn.disabled = false;
+                    submitText.textContent = 'Submit Project Request';
+                    loading.style.display = 'none';
+                    
+                    // Reset form
+                    this.reset();
+                    
+                    // Auto-hide success message after 5 seconds
+                    setTimeout(() => {
+                        successMessage.style.display = 'none';
+                    }, 5000);
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    
+                    // Hide loading state
+                    submitBtn.disabled = false;
+                    submitText.textContent = 'Submit Project Request';
+                    loading.style.display = 'none';
+                });
             }
         });
         
@@ -2233,13 +2449,13 @@
                 const tidioChat = document.querySelector('#tidio-chat');
                 if (tidioChat) {
                     // Add margin to create space for our buttons
-                    tidioChat.style.setProperty('margin-bottom', '140px', 'important');
+                    tidioChat.style.setProperty('margin-bottom', '70px', 'important');
                 }
                 
                 // Alternative approach for Tidio iframe
                 const tidioIframe = document.querySelector('iframe[src*="tidio"]');
                 if (tidioIframe) {
-                    tidioIframe.style.setProperty('bottom', '140px', 'important');
+                    tidioIframe.style.setProperty('bottom', '70px', 'important');
                 }
             }, 3000); // Give Tidio time to load
         });
