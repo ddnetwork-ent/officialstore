@@ -2143,32 +2143,14 @@
             }
         }
         
-        // Plan selection buttons
-        document.querySelectorAll('.plan-btn').forEach(button => {
-            button.addEventListener('click', function() {
-                // Get plan data from button attributes
-                currentPlanData = {
-                    name: this.getAttribute('data-plan'),
-                    monthly: this.getAttribute('data-monthly'),
-                    yearly: this.getAttribute('data-yearly'),
-                    savings: this.getAttribute('data-savings')
-                };
-                
-                // Update modal with plan data
-                planNameDisplay.textContent = currentPlanData.name;
-                selectedPlanInput.value = currentPlanData.name;
-                
-                // Set default to monthly
-                monthlyBilling.classList.add('active');
-                yearlyBilling.classList.remove('active');
-                updatePlanDisplay('monthly');
-                
-                // Show modal
-                planModal.classList.add('show');
-                document.body.style.overflow = 'hidden';
-                planModalShown = true;
-            });
-        });
+        // Plan selection buttons - redirect to checkout page
+document.querySelectorAll('.plan-btn').forEach(button => {
+    button.addEventListener('click', function() {
+        const planName = this.getAttribute('data-plan');
+        const planKey = planName.toLowerCase().replace(/\s+/g, '-').replace('plan', '').trim();
+        window.location.href = `https://order.ddnetwork.uk?plan=${planKey}`;
+    });
+});
         
         // Close modals when clicking outside
         window.addEventListener('click', function(event) {
