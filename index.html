@@ -287,7 +287,7 @@
             text-decoration: none;
             color: var(--primary-black);
             font-weight: 500;
-            font-size: 0.95rem;
+            font-size: 0.85rem;
             transition: color 0.3s var(--smooth-transition);
             padding: 10px 0;
             text-transform: uppercase;
@@ -1293,7 +1293,7 @@
                 background-color: transparent;
                 box-shadow: none;
                 padding: 0;
-                gap: 40px;
+                gap: 30px;
                 width: auto;
                 align-items: center;
             }
@@ -1301,6 +1301,7 @@
             nav ul li a {
                 padding: 5px 0;
                 white-space: nowrap;
+                font-size: 0.85rem;
             }
             
             .hero {
@@ -1427,6 +1428,7 @@
                     <li><a href="#plans">Plans</a></li>
                     <li><a href="#process">Process</a></li>
                     <li><a href="#services">Services</a></li>
+                    <li><a href="#portfolio">Portfolio</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
             </nav>
@@ -1534,7 +1536,7 @@
                     <h4>Selected Plan</h4>
                     <div class="plan-details">
                         <div class="plan-name-display" id="planNameDisplay">HTML-Only Plan</div>
-                        <div class="plan-price-display" id="planPriceDisplay">RM39/month</div>
+                        <div class="plan-price-display" id="planPriceDisplay">RM59/month</div>
                     </div>
                     
                     <div class="billing-toggle">
@@ -1622,7 +1624,7 @@
                     <div class="plan-card">
                         <div class="plan-header">
                             <h3 class="plan-name">🟨 HTML-Only Plan</h3>
-                            <div class="plan-price">RM39<span>/month</span></div>
+                            <div class="plan-price">RM59<span>/month</span></div>
                             <p class="plan-description">RM249/year (save RM459)</p>
                             <p class="plan-description">For those who only need a simple HTML website — no system, no CMS, no backend.</p>
                         </div>
@@ -1638,7 +1640,7 @@
                             <li><i class="fas fa-check"></i> Basic Support</li>
                             <li><i class="fas fa-check"></i> Renewal: RM249/year</li>
                         </ul>
-                        <button class="plan-btn" data-plan="HTML-Only Plan" data-monthly="RM39" data-yearly="RM249" data-savings="Save RM459">Choose Plan</button>
+                        <button class="plan-btn" data-plan="HTML-Only Plan" data-monthly="RM59" data-yearly="RM249" data-savings="Save RM459">Choose Plan</button>
                     </div>
                     
                     <!-- Budget Plan -->
@@ -1980,6 +1982,7 @@
                         <li><a href="#plans">Plans</a></li>
                         <li><a href="#process">Process</a></li>
                         <li><a href="#services">Services</a></li>
+                        <li><a href="#portfolio">Portfolio</a></li>
                         <li><a href="#contact">Contact</a></li>
                     </ul>
                 </div>
@@ -2425,6 +2428,13 @@
                 e.preventDefault();
                 const targetId = this.getAttribute('href');
                 if (targetId === '#') return;
+                
+                // Special handling for portfolio link
+                if (targetId === '#portfolio') {
+                    // You can replace this with your actual portfolio URL
+                    window.open('https://your-portfolio-link.com', '_blank');
+                    return;
+                }
                 
                 const targetElement = document.querySelector(targetId);
                 if (targetElement) {
